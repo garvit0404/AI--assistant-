@@ -1,0 +1,12 @@
+{
+  "name": "task-queue",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "dependencies": {
+    "bullmq": "^5.4.1",
+    "express": "^4.18.2",
+    "redis": "^4.6.13",
+    "uuid": "^13.0.0",
+    "winston": "^3.11.0"
+  }
+}

@@ -1,0 +1,10 @@
+﻿{
+    "main":  "src/index.js",
+    "name":  "telegram-bot",
+    "version":  "1.0.0",
+    "dependencies":  {
+                         "winston":  "*",
+                         "axios":  "*",
+                         "express":  "*"
+                     }
+}

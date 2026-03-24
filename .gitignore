@@ -1,0 +1,82 @@
+# ============================================================
+# AI-Assistant - Main Git Ignore
+# ============================================================
+
+# --- Dependencies ---
+node_modules/
+**/node_modules/
+package-lock.json (exclude if using npm for strict version control, recommended to KEEP if desired, but many monorepos ignore lock in root)
+# Let's keep lock for standard npm/yarn/pnpm practices, but user specifically asked for node_modules.
+
+# --- Environment & Secrets ---
+.env
+*.env
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+**/env
+
+# --- Build Outputs ---
+.next/
+out/
+build/
+dist/
+**/build
+**/dist
+.next
+.docusaurus
+
+# --- Logs & Performance ---
+logs/
+**/logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# --- Infrastructure & Database Data ---
+# (Prevent committing large DB directories from docker volumes)
+infra/docker/mongo-data/
+infra/docker/redis-data/
+infra/docker/grafana-data/
+infra/docker/prometheus/data/
+**/mongo-data
+**/redis-data
+/data/db
+/data
+
+# --- User Workspace ---
+workspace/
+**/workspace/temp/
+# Usually we ignore the actual generated AI files to keep repo clean
+workspace/*.js
+workspace/*.py
+workspace/*.sh
+workspace/*.txt
+
+# --- IDE & OS Systems ---
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db
+
+# --- Testing ---
+coverage/
+.nyc_output
+
+# --- Miscellaneous ---
+.vercel
+.turbo
+.npm
+.cache
+.npmrc
+.yarn/
+.editorconfig (Keep if desired, optional to ignore)

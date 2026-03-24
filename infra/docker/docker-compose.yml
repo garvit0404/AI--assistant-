@@ -1,0 +1,577 @@
+version: '3.9'
+
+# ============================================================
+# AI-Assistant - Docker Compose
+# Location: infra/docker/docker-compose.yml
+# Build context root: ../../  (monorepo root)
+# Start with: docker-compose -f infra/docker/docker-compose.yml up -d
+# ============================================================
+
+x-logging: &default-logging
+  driver: "json-file"
+  options:
+    max-size: "10m"
+    max-file: "3"
+
+x-restart: &default-restart
+  restart: unless-stopped
+
+x-service-base: &service-base
+  restart: unless-stopped
+  networks:
+    - ai_net
+  logging:
+    driver: "json-file"
+    options:
+      max-size: "10m"
+      max-file: "3"
+
+services:
+
+  # ============================================================
+  # LAYER 1 - INFRASTRUCTURE (no dependencies)
+  # ============================================================
+
+  mongodb:
+    image: mongo:7
+    container_name: ai_mongodb
+    <<: *service-base
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 40s
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+
+  redis:
+    image: redis:7-alpine
+    container_name: ai_redis
+    <<: *service-base
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+
+  # ============================================================
+  # LAYER 2 - CORE SERVICES (depend on infra)
+  # ============================================================
+
+  policy-engine:
+    build:
+      context: ../../
+      dockerfile: services/policy-engine/Dockerfile
+    container_name: ai_policy_engine
+    <<: *service-base
+    ports:
+      - "3005:3005"
+    env_file:
+      - ../../.env
+    volumes:
+      - logs:/app/logs
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3005/health', (r) => process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+
+  permission-engine:
+    build:
+      context: ../../
+      dockerfile: services/permission-engine/Dockerfile
+    container_name: ai_permission_engine
+    <<: *service-base
+    ports:
+      - "3006:3006"
+    env_file:
+      - ../../.env
+    environment:
+      - REDIS_URL=redis://ai_redis:6379
+    depends_on:
+      redis:
+        condition: service_healthy
+    volumes:
+      - logs:/app/logs
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3006/health', (r) => process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+
+  tool-registry:
+    build:
+      context: ../../
+      dockerfile: services/tool-registry/Dockerfile
+    container_name: ai_tool_registry
+    <<: *service-base
+    ports:
+      - "3012:3012"
+    env_file:
+      - ../../.env
+    volumes:
+      - logs:/app/logs
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3012/health', (r) => process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+
+  task-queue:
+    build:
+      context: ../../
+      dockerfile: services/task-queue/Dockerfile
+    container_name: ai_task_queue
+    <<: *service-base
+    ports:
+      - "3013:3013"
+    env_file:
+      - ../../.env
+    environment:
+      - REDIS_URL=redis://ai_redis:6379
+    depends_on:
+      redis:
+        condition: service_healthy
+    volumes:
+      - logs:/app/logs
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3013/health', (r) => process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+
+  intent-parser:
+    build:
+      context: ../../
+      dockerfile: services/intent-parser/Dockerfile
+    container_name: ai_intent_parser
+    <<: *service-base
+    ports:
+      - "3007:3007"
+    env_file:
+      - ../../.env
+    volumes:
+      - logs:/app/logs
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3007/health', (r) => process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+
+  context-builder:
+    build:
+      context: ../../
+      dockerfile: services/context-builder/Dockerfile
+    container_name: ai_context_builder
+    <<: *service-base
+    ports:
+      - "3010:3010"
+    env_file:
+      - ../../.env
+    environment:
+      - MONGO_URL=mongodb://ai_mongodb:27017/ai_os
+      - REDIS_URL=redis://ai_redis:6379
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - logs:/app/logs
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3010/health', (r) => process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+
+  observer-agent:
+    build:
+      context: ../../
+      dockerfile: services/observer-agent/Dockerfile
+    container_name: ai_observer
+    <<: *service-base
+    ports:
+      - "3009:3009"
+    env_file:
+      - ../../.env
+    environment:
+      - MONGO_URL=mongodb://ai_mongodb:27017/ai_os
+      - PORT=3009
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    volumes:
+      - logs:/app/logs
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3009/health', (r) => process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+
+  # ============================================================
+  # LAYER 3 - AGENT SERVICES (depend on core services)
+  # ============================================================
+
+  planner-agent:
+    build:
+      context: ../../
+      dockerfile: services/planner-agent/Dockerfile
+    container_name: ai_planner
+    <<: *service-base
+    ports:
+      - "3008:3008"
+    env_file:
+      - ../../.env
+    depends_on:
+      policy-engine:
+        condition: service_healthy
+      permission-engine:
+        condition: service_healthy
+    volumes:
+      - logs:/app/logs
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3008/health', (r) => process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+
+  executor-agent:
+    build:
+      context: ../../
+      dockerfile: services/executor-agent/Dockerfile
+    container_name: ai_executor
+    <<: *service-base
+    ports:
+      - "3004:3004"
+    env_file:
+      - ../../.env
+    depends_on:
+      tool-registry:
+        condition: service_healthy
+      permission-engine:
+        condition: service_healthy
+    volumes:
+      - logs:/app/logs
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3004/health', (r) => process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+
+  # ============================================================
+  # LAYER 4 - BRAIN & API (depend on all agents)
+  # ============================================================
+
+  ai-brain:
+    build:
+      context: ../../
+      dockerfile: services/ai-brain/Dockerfile
+    container_name: ai_brain
+    <<: *service-base
+    ports:
+      - "3003:3003"
+    env_file:
+      - ../../.env
+    environment:
+      - MONGO_URL=mongodb://ai_mongodb:27017/ai_os
+      - REDIS_URL=redis://ai_redis:6379
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      intent-parser:
+        condition: service_healthy
+      planner-agent:
+        condition: service_healthy
+      executor-agent:
+        condition: service_healthy
+      observer-agent:
+        condition: service_healthy
+    volumes:
+      - logs:/app/logs
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3003/health', (r) => process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+
+  api-server:
+    build:
+      context: ../../
+      dockerfile: services/api-server/Dockerfile
+    container_name: ai_api_server
+    <<: *service-base
+    ports:
+      - "3001:3001"
+    env_file:
+      - ../../.env
+    environment:
+      - MONGO_URL=mongodb://ai_mongodb:27017/ai_os
+      - REDIS_URL=redis://ai_redis:6379
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      ai-brain:
+        condition: service_healthy
+    volumes:
+      - logs:/app/logs
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3001/health', (r) => process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+
+  # ============================================================
+  # LAYER 5 - INTERFACES (depend on brain/api)
+  # ============================================================
+
+  dashboard:
+    build:
+      context: ../../
+      dockerfile: apps/dashboard-next/Dockerfile
+    container_name: ai_dashboard
+    <<: *service-base
+    ports:
+      - "8080:8080"
+    env_file:
+      - ../../.env
+    environment:
+      - API_BASE_URL=http://ai_api_server:3001
+      - NEXT_PUBLIC_API_BASE_URL=http://localhost:3001
+    depends_on:
+      api-server:
+        condition: service_healthy
+    volumes:
+      - logs:/app/logs
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:8080/', (r) => process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+
+  control-plane:
+    build:
+      context: ../../
+      dockerfile: apps/control-plane/Dockerfile
+    container_name: ai_control_plane
+    <<: *service-base
+    ports:
+      - "3000:3000"
+    env_file:
+      - ../../.env
+    environment:
+      - API_BASE_URL=http://ai_api_server:3001
+      - NEXT_PUBLIC_API_BASE_URL=http://localhost:3001
+    depends_on:
+      api-server:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/', (r) => process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+
+  telegram-bot:
+    build:
+      context: ../../
+      dockerfile: apps/telegram-bot/Dockerfile
+    container_name: ai_telegram_bot
+    <<: *service-base
+    ports:
+      - "3011:3011"
+    env_file:
+      - ../../.env
+    depends_on:
+      permission-engine:
+        condition: service_healthy
+      ai-brain:
+        condition: service_healthy
+    volumes:
+      - logs:/app/logs
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3011/health', (r) => process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+
+  # ============================================================
+  # LAYER 6 - SANDBOX (isolated, no dependencies)
+  # ============================================================
+
+  sandbox:
+    build:
+      context: ../../
+      dockerfile: infra/sandbox/Dockerfile
+    container_name: ai_sandbox
+    <<: *service-base
+    volumes:
+      - ../../workspace:/home/sandboxuser/workspace
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - SETUID
+      - SETGID
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+
+  # ============================================================
+  # LAYER 7 - OBSERVABILITY (no dependencies)
+  # ============================================================
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: ai_prometheus
+    <<: *service-base
+    ports:
+      - "19090:9090"
+    volumes:
+      - ../../infra/monitoring/prometheus:/etc/prometheus:ro
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: ai_grafana
+    <<: *service-base
+    ports:
+      - "13000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana-data:/var/lib/grafana
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: ai_cadvisor
+    <<: *service-base
+    ports:
+      - "18080:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8080/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+
+# ============================================================
+# VOLUMES
+# ============================================================
+volumes:
+  mongo-data:
+  redis-data:
+  logs:
+  grafana-data:
+
+# ============================================================
+# NETWORKS
+# ============================================================
+networks:
+  ai_net:
+    driver: bridge

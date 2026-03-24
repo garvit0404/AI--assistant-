@@ -1,0 +1,74 @@
+{
+  "tools": {
+    "browser.open_page": {
+      "service": "browser_service",
+      "permission": "browse_web",
+      "risk_level": "MEDIUM",
+      "sandbox": true,
+      "rate_limit": 10
+    },
+    "browser.search": {
+      "service": "browser_service",
+      "permission": "browse_web",
+      "risk_level": "LOW",
+      "sandbox": true,
+      "rate_limit": 5
+    },
+    "browser.extract": {
+      "service": "browser_service",
+      "permission": "browse_web",
+      "risk_level": "MEDIUM",
+      "sandbox": true,
+      "rate_limit": 10
+    },
+    "filesystem.read": {
+      "service": "file_service",
+      "permission": "read_file",
+      "risk_level": "MEDIUM",
+      "sandbox": true,
+      "rate_limit": 50
+    },
+    "filesystem.write": {
+      "service": "file_service",
+      "permission": "write_file",
+      "risk_level": "HIGH",
+      "sandbox": true,
+      "rate_limit": 20
+    },
+    "filesystem.delete": {
+      "service": "file_service",
+      "permission": "delete_file",
+      "risk_level": "CRITICAL",
+      "sandbox": true,
+      "rate_limit": 5
+    },
+    "system.exec": {
+      "service": "system_service",
+      "permission": "system_command",
+      "risk_level": "CRITICAL",
+      "sandbox": true,
+      "rate_limit": 2
+    },
+    "system.docker_run": {
+      "service": "system_service",
+      "permission": "docker_run",
+      "risk_level": "CRITICAL",
+      "sandbox": false,
+      "rate_limit": 5
+    },
+    "web.fetch": {
+      "service": "api_fetch",
+      "permission": "api_fetch",
+      "risk_level": "MEDIUM",
+      "sandbox": true,
+      "rate_limit": 30
+    },
+    "telegram.send_message": {
+      "service": "telegram_service",
+      "permission": "send_telegram",
+      "risk_level": "HIGH",
+      "sandbox": false,
+      "rate_limit": 10
+    }
+  }
+}

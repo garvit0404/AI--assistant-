@@ -1,0 +1,9 @@
+{
+  "name": "sandbox-bridge",
+  "version": "1.0.0",
+  "main": "src/bridge.js",
+  "dependencies": {
+    "express": "^4.18.2",
+    "playwright": "1.42.1"
+  }
+}

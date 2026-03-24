@@ -1,0 +1,1571 @@
+﻿=== MONOREPO ROOT STRUCTURE ===
+
+Name                                  PSIsContainer
+----                                  -------------
+apps                                           True
+config                                         True
+docs                                           True
+infra                                          True
+node_modules                                   True
+packages                                       True
+services                                       True
+tools                                          True
+workspace                                      True
+.dockerignore                                 False
+.env                                          False
+.gitignore                                    False
+CONTRIBUTING.md                               False
+error.log                                     False
+package-lock.json                             False
+package.json                                  False
+README.md                                     False
+start-infrastructure.ps1                      False
+start.ps1                                     False
+start.sh                                      False
+structure.txt                                 False
+structure2.txt                                False
+structure3.txt                                False
+control-plane                                  True
+dashboard                                      True
+dashboard-next                                 True
+telegram-bot                                   True
+executionMode.ts                              False
+ports.js                                      False
+01-architecture.md                            False
+03-project-structure.md                       False
+04-docker-environment.md                      False
+05-security-model.md                          False
+07-development-workflow.md                    False
+10-data-storage.md                            False
+11-future-roadmap.md                          False
+README.md                                     False
+docker                                         True
+mongo-data                                     True
+monitoring                                     True
+redis-data                                     True
+sandbox                                        True
+scripts                                        True
+.env.example                                  False
+.bin                                           True
+@ai-assistant                                  True
+@alloc                                         True
+@babel                                         True
+@balena                                        True
+@colors                                        True
+@dabh                                          True
+@emnapi                                        True
+@eslint                                        True
+@eslint-community                              True
+@grpc                                          True
+@humanfs                                       True
+@humanwhocodes                                 True
+@img                                           True
+@ioredis                                       True
+@jridgewell                                    True
+@js-sdsl                                       True
+@mongodb-js                                    True
+@msgpackr-extract                              True
+@napi-rs                                       True
+@next                                          True
+@nodelib                                       True
+@nolyfill                                      True
+@opentelemetry                                 True
+@protobufjs                                    True
+@redis                                         True
+@rtsao                                         True
+@so-ric                                        True
+@socket.io                                     True
+@swc                                           True
+@tailwindcss                                   True
+@tybys                                         True
+@types                                         True
+@typescript-eslint                             True
+@unrs                                          True
+@xyflow                                        True
+abort-controller                               True
+accepts                                        True
+acorn                                          True
+acorn-jsx                                      True
+agentkeepalive                                 True
+ai-brain                                       True
+ajv                                            True
+ansi-regex                                     True
+ansi-styles                                    True
+anymatch                                       True
+api                                            True
+api-server                                     True
+argparse                                       True
+aria-query                                     True
+array-buffer-byte-length                       True
+array-flatten                                  True
+array-includes                                 True
+array.prototype.findlast                       True
+array.prototype.findlastindex                  True
+array.prototype.flat                           True
+array.prototype.flatmap                        True
+array.prototype.tosorted                       True
+arraybuffer.prototype.slice                    True
+asn1                                           True
+ast-types-flow                                 True
+async                                          True
+async-function                                 True
+asynckit                                       True
+available-typed-arrays                         True
+axe-core                                       True
+axios                                          True
+axobject-query                                 True
+babel-plugin-react-compiler                    True
+balanced-match                                 True
+base64-js                                      True
+base64id                                       True
+baseline-browser-mapping                       True
+bcrypt-pbkdf                                   True
+binary-extensions                              True
+bintrees                                       True
+bl                                             True
+body-parser                                    True
+brace-expansion                                True
+braces                                         True
+browserslist                                   True
+bson                                           True
+buffer                                         True
+bullmq                                         True
+bytes                                          True
+call-bind                                      True
+call-bind-apply-helpers                        True
+call-bound                                     True
+callsites                                      True
+caniuse-lite                                   True
+chalk                                          True
+chokidar                                       True
+chownr                                         True
+classcat                                       True
+client-only                                    True
+cliui                                          True
+clsx                                           True
+cluster-key-slot                               True
+color                                          True
+color-convert                                  True
+color-name                                     True
+color-string                                   True
+combined-stream                                True
+concat-map                                     True
+content-disposition                            True
+content-type                                   True
+context-builder                                True
+control-plane                                  True
+convert-source-map                             True
+cookie                                         True
+cookie-signature                               True
+cors                                           True
+cron-parser                                    True
+cross-spawn                                    True
+d3-color                                       True
+d3-dispatch                                    True
+d3-drag                                        True
+d3-ease                                        True
+d3-interpolate                                 True
+d3-selection                                   True
+d3-timer                                       True
+d3-transition                                  True
+d3-zoom                                        True
+damerau-levenshtein                            True
+dashboard-next                                 True
+data-view-buffer                               True
+data-view-byte-length                          True
+data-view-byte-offset                          True
+debug                                          True
+deep-is                                        True
+define-data-property                           True
+define-properties                              True
+delayed-stream                                 True
+denque                                         True
+depd                                           True
+destroy                                        True
+detect-libc                                    True
+docker-modem                                   True
+dockerode                                      True
+doctrine                                       True
+dotenv                                         True
+dunder-proto                                   True
+ee-first                                       True
+electron-to-chromium                           True
+emoji-regex                                    True
+enabled                                        True
+encodeurl                                      True
+end-of-stream                                  True
+engine.io                                      True
+engine.io-client                               True
+engine.io-parser                               True
+enhanced-resolve                               True
+es-abstract                                    True
+es-define-property                             True
+es-errors                                      True
+es-iterator-helpers                            True
+es-object-atoms                                True
+es-set-tostringtag                             True
+es-shim-unscopables                            True
+es-to-primitive                                True
+escalade                                       True
+escape-html                                    True
+escape-string-regexp                           True
+eslint                                         True
+eslint-config-next                             True
+eslint-import-resolver-node                    True
+eslint-import-resolver-typescript              True
+eslint-module-utils                            True
+eslint-plugin-import                           True
+eslint-plugin-jsx-a11y                         True
+eslint-plugin-react                            True
+eslint-plugin-react-hooks                      True
+eslint-scope                                   True
+eslint-visitor-keys                            True
+espree                                         True
+esquery                                        True
+esrecurse                                      True
+estraverse                                     True
+esutils                                        True
+etag                                           True
+event-target-shim                              True
+executor-agent                                 True
+express                                        True
+fast-deep-equal                                True
+fast-glob                                      True
+fast-json-stable-stringify                     True
+fast-levenshtein                               True
+fastq                                          True
+fecha                                          True
+file-entry-cache                               True
+fill-range                                     True
+finalhandler                                   True
+find-up                                        True
+flat-cache                                     True
+flatted                                        True
+fn.name                                        True
+follow-redirects                               True
+for-each                                       True
+form-data                                      True
+form-data-encoder                              True
+formdata-node                                  True
+forwarded                                      True
+framer-motion                                  True
+fresh                                          True
+fs-constants                                   True
+fs-extra                                       True
+function-bind                                  True
+function.prototype.name                        True
+functions-have-names                           True
+generator-function                             True
+generic-pool                                   True
+gensync                                        True
+get-caller-file                                True
+get-intrinsic                                  True
+get-proto                                      True
+get-symbol-description                         True
+get-tsconfig                                   True
+glob                                           True
+glob-parent                                    True
+globals                                        True
+globalthis                                     True
+gopd                                           True
+graceful-fs                                    True
+has-bigints                                    True
+has-flag                                       True
+has-property-descriptors                       True
+has-proto                                      True
+has-symbols                                    True
+has-tostringtag                                True
+hasown                                         True
+hermes-estree                                  True
+hermes-parser                                  True
+http-errors                                    True
+humanize-ms                                    True
+iconv-lite                                     True
+ieee754                                        True
+ignore                                         True
+ignore-by-default                              True
+import-fresh                                   True
+imurmurhash                                    True
+inherits                                       True
+intent-parser                                  True
+internal-slot                                  True
+ioredis                                        True
+ipaddr.js                                      True
+is-array-buffer                                True
+is-async-function                              True
+is-bigint                                      True
+is-binary-path                                 True
+is-boolean-object                              True
+is-bun-module                                  True
+is-callable                                    True
+is-core-module                                 True
+is-data-view                                   True
+is-date-object                                 True
+is-extglob                                     True
+is-finalizationregistry                        True
+is-fullwidth-code-point                        True
+is-generator-function                          True
+is-glob                                        True
+is-map                                         True
+is-negative-zero                               True
+is-number                                      True
+is-number-object                               True
+is-promise                                     True
+is-regex                                       True
+is-set                                         True
+is-shared-array-buffer                         True
+is-stream                                      True
+is-string                                      True
+is-symbol                                      True
+is-typed-array                                 True
+is-weakmap                                     True
+is-weakref                                     True
+is-weakset                                     True
+isarray                                        True
+isexe                                          True
+iterator.prototype                             True
+jiti                                           True
+js-tokens                                      True
+js-yaml                                        True
+jsesc                                          True
+json-buffer                                    True
+json-schema-traverse                           True
+json-stable-stringify-without-jsonify          True
+json5                                          True
+jsonfile                                       True
+jsx-ast-utils                                  True
+kareem                                         True
+keyv                                           True
+kuler                                          True
+language-subtag-registry                       True
+language-tags                                  True
+levn                                           True
+lightningcss                                   True
+lightningcss-win32-x64-msvc                    True
+locate-path                                    True
+lodash.camelcase                               True
+lodash.defaults                                True
+lodash.isarguments                             True
+lodash.merge                                   True
+logform                                        True
+long                                           True
+loose-envify                                   True
+lru-cache                                      True
+lucide-react                                   True
+luxon                                          True
+magic-string                                   True
+math-intrinsics                                True
+media-typer                                    True
+memory-pager                                   True
+merge-descriptors                              True
+merge2                                         True
+methods                                        True
+micromatch                                     True
+mime                                           True
+mime-db                                        True
+mime-types                                     True
+minimatch                                      True
+minimist                                       True
+minipass                                       True
+mkdirp-classic                                 True
+mongodb                                        True
+mongodb-connection-string-url                  True
+mongoose                                       True
+motion-dom                                     True
+motion-utils                                   True
+mpath                                          True
+mquery                                         True
+ms                                             True
+msgpackr                                       True
+msgpackr-extract                               True
+nanoid                                         True
+napi-postinstall                               True
+natural-compare                                True
+negotiator                                     True
+next                                           True
+node-abort-controller                          True
+node-domexception                              True
+node-exports-info                              True
+node-fetch                                     True
+node-gyp-build-optional-packages               True
+node-releases                                  True
+nodemon                                        True
+normalize-path                                 True
+object-assign                                  True
+object-inspect                                 True
+object-keys                                    True
+object.assign                                  True
+object.entries                                 True
+object.fromentries                             True
+object.groupby                                 True
+object.values                                  True
+observer-agent                                 True
+on-finished                                    True
+once                                           True
+one-time                                       True
+openai                                         True
+optionator                                     True
+own-keys                                       True
+p-limit                                        True
+p-locate                                       True
+package-json-from-dist                         True
+parent-module                                  True
+parseurl                                       True
+path-exists                                    True
+path-key                                       True
+path-parse                                     True
+path-scurry                                    True
+path-to-regexp                                 True
+permission-engine                              True
+picocolors                                     True
+picomatch                                      True
+planner-agent                                  True
+policy-engine                                  True
+possible-typed-array-names                     True
+postcss                                        True
+prelude-ls                                     True
+prom-client                                    True
+prop-types                                     True
+protobufjs                                     True
+proxy-addr                                     True
+proxy-from-env                                 True
+pstree.remy                                    True
+pump                                           True
+punycode                                       True
+qs                                             True
+queue-microtask                                True
+range-parser                                   True
+raw-body                                       True
+react                                          True
+react-dom                                      True
+react-is                                       True
+readable-stream                                True
+readdirp                                       True
+redis                                          True
+redis-errors                                   True
+redis-parser                                   True
+reflect.getprototypeof                         True
+regexp.prototype.flags                         True
+require-directory                              True
+resolve                                        True
+resolve-from                                   True
+resolve-pkg-maps                               True
+reusify                                        True
+rimraf                                         True
+router                                         True
+run-parallel                                   True
+safe-array-concat                              True
+safe-buffer                                    True
+safe-push-apply                                True
+safe-regex-test                                True
+safe-stable-stringify                          True
+safer-buffer                                   True
+scheduler                                      True
+semver                                         True
+send                                           True
+serve-static                                   True
+set-function-length                            True
+set-function-name                              True
+set-proto                                      True
+setprototypeof                                 True
+sharp                                          True
+shebang-command                                True
+shebang-regex                                  True
+side-channel                                   True
+side-channel-list                              True
+side-channel-map                               True
+side-channel-weakmap                           True
+sift                                           True
+simple-update-notifier                         True
+socket.io                                      True
+socket.io-adapter                              True
+socket.io-client                               True
+socket.io-parser                               True
+source-map-js                                  True
+sparse-bitfield                                True
+split-ca                                       True
+ssh2                                           True
+stable-hash                                    True
+stack-trace                                    True
+standard-as-callback                           True
+statuses                                       True
+stop-iteration-iterator                        True
+string-width                                   True
+string.prototype.includes                      True
+string.prototype.matchall                      True
+string.prototype.repeat                        True
+string.prototype.trim                          True
+string.prototype.trimend                       True
+string.prototype.trimstart                     True
+string_decoder                                 True
+strip-ansi                                     True
+strip-bom                                      True
+strip-json-comments                            True
+styled-jsx                                     True
+supports-color                                 True
+supports-preserve-symlinks-flag                True
+tailwind-merge                                 True
+tailwindcss                                    True
+tapable                                        True
+tar-fs                                         True
+tar-stream                                     True
+task-queue                                     True
+tdigest                                        True
+telegram-bot                                   True
+text-hex                                       True
+tinyglobby                                     True
+to-regex-range                                 True
+toidentifier                                   True
+tool-registry                                  True
+touch                                          True
+tr46                                           True
+triple-beam                                    True
+ts-api-utils                                   True
+tsconfig-paths                                 True
+tslib                                          True
+tweetnacl                                      True
+type-check                                     True
+type-is                                        True
+typed-array-buffer                             True
+typed-array-byte-length                        True
+typed-array-byte-offset                        True
+typed-array-length                             True
+typescript                                     True
+typescript-eslint                              True
+unbox-primitive                                True
+undefsafe                                      True
+undici-types                                   True
+universalify                                   True
+unpipe                                         True
+unrs-resolver                                  True
+update-browserslist-db                         True
+uri-js                                         True
+use-sync-external-store                        True
+util-deprecate                                 True
+utils-merge                                    True
+uuid                                           True
+vary                                           True
+web-streams-polyfill                           True
+webidl-conversions                             True
+whatwg-url                                     True
+which                                          True
+which-boxed-primitive                          True
+which-builtin-type                             True
+which-collection                               True
+which-typed-array                              True
+winston                                        True
+winston-transport                              True
+word-wrap                                      True
+wrap-ansi                                      True
+wrappy                                         True
+ws                                             True
+xmlhttprequest-ssl                             True
+y18n                                           True
+yallist                                        True
+yargs                                          True
+yargs-parser                                   True
+yocto-queue                                    True
+zod                                            True
+zod-validation-error                           True
+zustand                                        True
+.package-lock.json                            False
+permission-model                               True
+shared-config                                  True
+task-model                                     True
+task-queue                                     True
+tool-model                                     True
+tool-registry                                  True
+ai-brain                                       True
+ai-server                                      True
+api                                            True
+api-server                                     True
+context-builder                                True
+executor-agent                                 True
+intent-parser                                  True
+observer-agent                                 True
+permission-engine                              True
+planner-agent                                  True
+policy-engine                                  True
+task-queue                                     True
+tool-registry                                  True
+add_expose.py                                 False
+add_logs_volume.py                            False
+distribute_ignore.js                          False
+fix_build_errors.py                           False
+fix_contexts.js                               False
+fix_pkg.py                                    False
+generate_dockerfiles.py                       False
+gen_locks.py                                  False
+update_compose.py                             False
+update_compose_surgical.js                    False
+update_compose_volumes.js                     False
+workspace                                      True
+hello.js                                      False
+
+
+
+=== SERVICE INDEX FILES ===
+
+FullName                                                                                                           
+--------                                                                                                           
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\@redis\bloom\dist\index.js                                
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\@redis\bloom\dist\commands\index.js                       
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\@redis\bloom\dist\commands\bloom\index.js                 
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\@redis\bloom\dist\commands\count-min-sketch\index.js      
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\@redis\bloom\dist\commands\cuckoo\index.js                
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\@redis\bloom\dist\commands\t-digest\index.js              
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\@redis\bloom\dist\commands\top-k\index.js                 
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\@redis\client\dist\index.js                               
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\@redis\client\dist\lib\client\index.js                    
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\@redis\client\dist\lib\cluster\index.js                   
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\@redis\client\dist\lib\commands\index.js                  
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\@redis\graph\dist\index.js                                
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\@redis\graph\dist\commands\index.js                       
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\@redis\json\dist\index.js                                 
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\@redis\json\dist\commands\index.js                        
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\@redis\search\dist\index.js                               
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\@redis\search\dist\commands\index.js                      
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\@redis\time-series\dist\index.js                          
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\@redis\time-series\dist\commands\index.js                 
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\accepts\index.js                                          
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\body-parser\index.js                                      
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\content-disposition\index.js                              
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\cookie-signature\index.js                                 
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\debug\src\index.js                                        
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\express\index.js                                          
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\express\lib\router\index.js                               
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\finalhandler\index.js                                     
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\fresh\index.js                                            
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\iconv-lite\encodings\index.js                             
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\iconv-lite\lib\index.js                                   
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\media-typer\index.js                                      
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\merge-descriptors\index.js                                
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\mime-db\index.js                                          
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\mime-types\index.js                                       
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\ms\index.js                                               
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\negotiator\index.js                                       
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\path-to-regexp\index.js                                   
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\qs\lib\index.js                                           
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\raw-body\index.js                                         
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\redis\dist\index.js                                       
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\send\index.js                                             
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\send\node_modules\ms\index.js                             
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\serve-static\index.js                                     
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\node_modules\type-is\index.js                                          
+D:\AI-DOCKER\AI-Assistant\services\ai-brain\src\index.js                                                           
+D:\AI-DOCKER\AI-Assistant\services\api\index.js                                                                    
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\@redis\bloom\dist\index.js                              
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\@redis\bloom\dist\commands\index.js                     
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\@redis\bloom\dist\commands\bloom\index.js               
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\@redis\bloom\dist\commands\count-min-sketch\index.js    
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\@redis\bloom\dist\commands\cuckoo\index.js              
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\@redis\bloom\dist\commands\t-digest\index.js            
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\@redis\bloom\dist\commands\top-k\index.js               
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\@redis\client\dist\index.js                             
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\@redis\client\dist\lib\client\index.js                  
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\@redis\client\dist\lib\cluster\index.js                 
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\@redis\client\dist\lib\commands\index.js                
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\@redis\graph\dist\index.js                              
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\@redis\graph\dist\commands\index.js                     
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\@redis\json\dist\index.js                               
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\@redis\json\dist\commands\index.js                      
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\@redis\search\dist\index.js                             
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\@redis\search\dist\commands\index.js                    
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\@redis\time-series\dist\index.js                        
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\@redis\time-series\dist\commands\index.js               
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\accepts\index.js                                        
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\body-parser\index.js                                    
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\bson\vendor\text-encoding\index.js                      
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\content-disposition\index.js                            
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\cookie-signature\index.js                               
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\debug\node_modules\ms\index.js                          
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\debug\src\index.js                                      
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\express\index.js                                        
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\express\lib\router\index.js                             
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\finalhandler\index.js                                   
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\fresh\index.js                                          
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\iconv-lite\encodings\index.js                           
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\iconv-lite\lib\index.js                                 
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\kareem\index.js                                         
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\media-typer\index.js                                    
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\merge-descriptors\index.js                              
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\mime-db\index.js                                        
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\mime-types\index.js                                     
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\mongodb\lib\index.js                                    
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\mongodb\lib\client-side-encryption\providers\index.js   
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\mongodb\lib\gridfs\index.js                             
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\mongodb-connection-string-url\lib\index.js              
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\mongoose\index.js                                       
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\mongoose\lib\index.js                                   
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\mongoose\lib\drivers\browser\index.js                   
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\mongoose\lib\drivers\node-mongodb-native\index.js       
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\mongoose\lib\error\index.js                             
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\mongoose\lib\plugins\index.js                           
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\mongoose\lib\schema\index.js                            
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\mongoose\lib\types\index.js                             
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\mongoose\lib\types\array\index.js                       
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\mongoose\lib\types\array\methods\index.js               
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\mongoose\lib\types\documentArray\index.js               
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\mongoose\lib\types\documentArray\methods\index.js       
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\mquery\lib\collection\index.js                          
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\mquery\node_modules\debug\src\index.js                  
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\negotiator\index.js                                     
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\path-to-regexp\index.js                                 
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\qs\lib\index.js                                         
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\raw-body\index.js                                       
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\redis\dist\index.js                                     
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\send\index.js                                           
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\serve-static\index.js                                   
+D:\AI-DOCKER\AI-Assistant\services\api-server\node_modules\type-is\index.js                                        
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\@redis\bloom\dist\index.js                         
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\@redis\bloom\dist\commands\index.js                
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\@redis\bloom\dist\commands\bloom\index.js          
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\@redis\bloom\dist\commands\count-min-sketch\inde...
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\@redis\bloom\dist\commands\cuckoo\index.js         
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\@redis\bloom\dist\commands\t-digest\index.js       
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\@redis\bloom\dist\commands\top-k\index.js          
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\@redis\client\dist\index.js                        
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\@redis\client\dist\lib\client\index.js             
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\@redis\client\dist\lib\cluster\index.js            
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\@redis\client\dist\lib\commands\index.js           
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\@redis\graph\dist\index.js                         
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\@redis\graph\dist\commands\index.js                
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\@redis\json\dist\index.js                          
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\@redis\json\dist\commands\index.js                 
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\@redis\search\dist\index.js                        
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\@redis\search\dist\commands\index.js               
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\@redis\time-series\dist\index.js                   
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\@redis\time-series\dist\commands\index.js          
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\accepts\index.js                                   
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\body-parser\index.js                               
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\bson\vendor\text-encoding\index.js                 
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\content-disposition\index.js                       
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\cookie-signature\index.js                          
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\debug\node_modules\ms\index.js                     
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\debug\src\index.js                                 
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\express\index.js                                   
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\express\lib\router\index.js                        
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\finalhandler\index.js                              
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\fresh\index.js                                     
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\iconv-lite\encodings\index.js                      
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\iconv-lite\lib\index.js                            
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\kareem\index.js                                    
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\media-typer\index.js                               
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\merge-descriptors\index.js                         
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\mime-db\index.js                                   
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\mime-types\index.js                                
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\mongodb\lib\index.js                               
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\mongodb\lib\client-side-encryption\providers\ind...
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\mongodb\lib\gridfs\index.js                        
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\mongodb-connection-string-url\lib\index.js         
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\mongoose\index.js                                  
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\mongoose\lib\index.js                              
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\mongoose\lib\drivers\browser\index.js              
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\mongoose\lib\drivers\node-mongodb-native\index.js  
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\mongoose\lib\error\index.js                        
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\mongoose\lib\plugins\index.js                      
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\mongoose\lib\schema\index.js                       
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\mongoose\lib\types\index.js                        
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\mongoose\lib\types\array\index.js                  
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\mongoose\lib\types\array\methods\index.js          
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\mongoose\lib\types\documentArray\index.js          
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\mongoose\lib\types\documentArray\methods\index.js  
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\mquery\lib\collection\index.js                     
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\mquery\node_modules\debug\src\index.js             
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\negotiator\index.js                                
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\path-to-regexp\index.js                            
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\qs\lib\index.js                                    
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\raw-body\index.js                                  
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\redis\dist\index.js                                
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\send\index.js                                      
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\serve-static\index.js                              
+D:\AI-DOCKER\AI-Assistant\services\context-builder\node_modules\type-is\index.js                                   
+D:\AI-DOCKER\AI-Assistant\services\context-builder\src\index.js                                                    
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\@redis\bloom\dist\index.js                          
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\@redis\bloom\dist\commands\index.js                 
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\@redis\bloom\dist\commands\bloom\index.js           
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\@redis\bloom\dist\commands\count-min-sketch\index.js
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\@redis\bloom\dist\commands\cuckoo\index.js          
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\@redis\bloom\dist\commands\t-digest\index.js        
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\@redis\bloom\dist\commands\top-k\index.js           
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\@redis\client\dist\index.js                         
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\@redis\client\dist\lib\client\index.js              
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\@redis\client\dist\lib\cluster\index.js             
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\@redis\client\dist\lib\commands\index.js            
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\@redis\graph\dist\index.js                          
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\@redis\graph\dist\commands\index.js                 
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\@redis\json\dist\index.js                           
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\@redis\json\dist\commands\index.js                  
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\@redis\search\dist\index.js                         
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\@redis\search\dist\commands\index.js                
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\@redis\time-series\dist\index.js                    
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\@redis\time-series\dist\commands\index.js           
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\accepts\index.js                                    
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\body-parser\index.js                                
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\content-disposition\index.js                        
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\cookie-signature\index.js                           
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\debug\src\index.js                                  
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\express\index.js                                    
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\express\lib\router\index.js                         
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\finalhandler\index.js                               
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\fresh\index.js                                      
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\iconv-lite\encodings\index.js                       
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\iconv-lite\lib\index.js                             
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\media-typer\index.js                                
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\merge-descriptors\index.js                          
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\mime-db\index.js                                    
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\mime-types\index.js                                 
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\ms\index.js                                         
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\negotiator\index.js                                 
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\path-to-regexp\index.js                             
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\qs\lib\index.js                                     
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\raw-body\index.js                                   
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\redis\dist\index.js                                 
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\send\index.js                                       
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\send\node_modules\ms\index.js                       
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\serve-static\index.js                               
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\node_modules\type-is\index.js                                    
+D:\AI-DOCKER\AI-Assistant\services\executor-agent\src\index.js                                                     
+D:\AI-DOCKER\AI-Assistant\services\intent-parser\node_modules\accepts\index.js                                     
+D:\AI-DOCKER\AI-Assistant\services\intent-parser\node_modules\body-parser\index.js                                 
+D:\AI-DOCKER\AI-Assistant\services\intent-parser\node_modules\content-disposition\index.js                         
+D:\AI-DOCKER\AI-Assistant\services\intent-parser\node_modules\cookie-signature\index.js                            
+D:\AI-DOCKER\AI-Assistant\services\intent-parser\node_modules\debug\src\index.js                                   
+D:\AI-DOCKER\AI-Assistant\services\intent-parser\node_modules\express\index.js                                     
+D:\AI-DOCKER\AI-Assistant\services\intent-parser\node_modules\express\lib\router\index.js                          
+D:\AI-DOCKER\AI-Assistant\services\intent-parser\node_modules\finalhandler\index.js                                
+D:\AI-DOCKER\AI-Assistant\services\intent-parser\node_modules\fresh\index.js                                       
+D:\AI-DOCKER\AI-Assistant\services\intent-parser\node_modules\iconv-lite\encodings\index.js                        
+D:\AI-DOCKER\AI-Assistant\services\intent-parser\node_modules\iconv-lite\lib\index.js                              
+D:\AI-DOCKER\AI-Assistant\services\intent-parser\node_modules\media-typer\index.js                                 
+D:\AI-DOCKER\AI-Assistant\services\intent-parser\node_modules\merge-descriptors\index.js                           
+D:\AI-DOCKER\AI-Assistant\services\intent-parser\node_modules\mime-db\index.js                                     
+D:\AI-DOCKER\AI-Assistant\services\intent-parser\node_modules\mime-types\index.js                                  
+D:\AI-DOCKER\AI-Assistant\services\intent-parser\node_modules\ms\index.js                                          
+D:\AI-DOCKER\AI-Assistant\services\intent-parser\node_modules\negotiator\index.js                                  
+D:\AI-DOCKER\AI-Assistant\services\intent-parser\node_modules\path-to-regexp\index.js                              
+D:\AI-DOCKER\AI-Assistant\services\intent-parser\node_modules\qs\lib\index.js                                      
+D:\AI-DOCKER\AI-Assistant\services\intent-parser\node_modules\raw-body\index.js                                    
+D:\AI-DOCKER\AI-Assistant\services\intent-parser\node_modules\send\index.js                                        
+D:\AI-DOCKER\AI-Assistant\services\intent-parser\node_modules\send\node_modules\ms\index.js                        
+D:\AI-DOCKER\AI-Assistant\services\intent-parser\node_modules\serve-static\index.js                                
+D:\AI-DOCKER\AI-Assistant\services\intent-parser\node_modules\type-is\index.js                                     
+D:\AI-DOCKER\AI-Assistant\services\intent-parser\src\index.js                                                      
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\@redis\bloom\dist\index.js                          
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\@redis\bloom\dist\commands\index.js                 
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\@redis\bloom\dist\commands\bloom\index.js           
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\@redis\bloom\dist\commands\count-min-sketch\index.js
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\@redis\bloom\dist\commands\cuckoo\index.js          
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\@redis\bloom\dist\commands\t-digest\index.js        
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\@redis\bloom\dist\commands\top-k\index.js           
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\@redis\client\dist\index.js                         
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\@redis\client\dist\lib\client\index.js              
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\@redis\client\dist\lib\cluster\index.js             
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\@redis\client\dist\lib\commands\index.js            
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\@redis\graph\dist\index.js                          
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\@redis\graph\dist\commands\index.js                 
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\@redis\json\dist\index.js                           
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\@redis\json\dist\commands\index.js                  
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\@redis\search\dist\index.js                         
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\@redis\search\dist\commands\index.js                
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\@redis\time-series\dist\index.js                    
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\@redis\time-series\dist\commands\index.js           
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\accepts\index.js                                    
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\body-parser\index.js                                
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\bson\vendor\text-encoding\index.js                  
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\content-disposition\index.js                        
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\cookie-signature\index.js                           
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\debug\node_modules\ms\index.js                      
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\debug\src\index.js                                  
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\express\index.js                                    
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\express\lib\router\index.js                         
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\finalhandler\index.js                               
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\fresh\index.js                                      
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\iconv-lite\encodings\index.js                       
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\iconv-lite\lib\index.js                             
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\kareem\index.js                                     
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\media-typer\index.js                                
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\merge-descriptors\index.js                          
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\mime-db\index.js                                    
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\mime-types\index.js                                 
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\mongodb\lib\index.js                                
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\mongodb\lib\client-side-encryption\providers\inde...
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\mongodb\lib\gridfs\index.js                         
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\mongodb-connection-string-url\lib\index.js          
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\mongoose\index.js                                   
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\mongoose\lib\index.js                               
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\mongoose\lib\drivers\browser\index.js               
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\mongoose\lib\drivers\node-mongodb-native\index.js   
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\mongoose\lib\error\index.js                         
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\mongoose\lib\plugins\index.js                       
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\mongoose\lib\schema\index.js                        
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\mongoose\lib\types\index.js                         
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\mongoose\lib\types\array\index.js                   
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\mongoose\lib\types\array\methods\index.js           
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\mongoose\lib\types\documentArray\index.js           
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\mongoose\lib\types\documentArray\methods\index.js   
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\mquery\lib\collection\index.js                      
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\mquery\node_modules\debug\src\index.js              
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\negotiator\index.js                                 
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\path-to-regexp\index.js                             
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\qs\lib\index.js                                     
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\raw-body\index.js                                   
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\redis\dist\index.js                                 
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\send\index.js                                       
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\serve-static\index.js                               
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\node_modules\type-is\index.js                                    
+D:\AI-DOCKER\AI-Assistant\services\observer-agent\src\index.js                                                     
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\@redis\bloom\dist\index.js                       
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\@redis\bloom\dist\commands\index.js              
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\@redis\bloom\dist\commands\bloom\index.js        
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\@redis\bloom\dist\commands\count-min-sketch\in...
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\@redis\bloom\dist\commands\cuckoo\index.js       
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\@redis\bloom\dist\commands\t-digest\index.js     
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\@redis\bloom\dist\commands\top-k\index.js        
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\@redis\client\dist\index.js                      
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\@redis\client\dist\lib\client\index.js           
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\@redis\client\dist\lib\cluster\index.js          
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\@redis\client\dist\lib\commands\index.js         
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\@redis\graph\dist\index.js                       
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\@redis\graph\dist\commands\index.js              
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\@redis\json\dist\index.js                        
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\@redis\json\dist\commands\index.js               
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\@redis\search\dist\index.js                      
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\@redis\search\dist\commands\index.js             
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\@redis\time-series\dist\index.js                 
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\@redis\time-series\dist\commands\index.js        
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\accepts\index.js                                 
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\body-parser\index.js                             
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\content-disposition\index.js                     
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\cookie-signature\index.js                        
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\debug\src\index.js                               
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\express\index.js                                 
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\express\lib\router\index.js                      
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\finalhandler\index.js                            
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\fresh\index.js                                   
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\iconv-lite\encodings\index.js                    
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\iconv-lite\lib\index.js                          
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\media-typer\index.js                             
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\merge-descriptors\index.js                       
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\mime-db\index.js                                 
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\mime-types\index.js                              
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\ms\index.js                                      
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\negotiator\index.js                              
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\path-to-regexp\index.js                          
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\qs\lib\index.js                                  
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\raw-body\index.js                                
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\redis\dist\index.js                              
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\send\index.js                                    
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\send\node_modules\ms\index.js                    
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\serve-static\index.js                            
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\node_modules\type-is\index.js                                 
+D:\AI-DOCKER\AI-Assistant\services\permission-engine\src\index.js                                                  
+D:\AI-DOCKER\AI-Assistant\services\planner-agent\node_modules\accepts\index.js                                     
+D:\AI-DOCKER\AI-Assistant\services\planner-agent\node_modules\body-parser\index.js                                 
+D:\AI-DOCKER\AI-Assistant\services\planner-agent\node_modules\content-disposition\index.js                         
+D:\AI-DOCKER\AI-Assistant\services\planner-agent\node_modules\cookie-signature\index.js                            
+D:\AI-DOCKER\AI-Assistant\services\planner-agent\node_modules\debug\src\index.js                                   
+D:\AI-DOCKER\AI-Assistant\services\planner-agent\node_modules\express\index.js                                     
+D:\AI-DOCKER\AI-Assistant\services\planner-agent\node_modules\express\lib\router\index.js                          
+D:\AI-DOCKER\AI-Assistant\services\planner-agent\node_modules\finalhandler\index.js                                
+D:\AI-DOCKER\AI-Assistant\services\planner-agent\node_modules\fresh\index.js                                       
+D:\AI-DOCKER\AI-Assistant\services\planner-agent\node_modules\iconv-lite\encodings\index.js                        
+D:\AI-DOCKER\AI-Assistant\services\planner-agent\node_modules\iconv-lite\lib\index.js                              
+D:\AI-DOCKER\AI-Assistant\services\planner-agent\node_modules\media-typer\index.js                                 
+D:\AI-DOCKER\AI-Assistant\services\planner-agent\node_modules\merge-descriptors\index.js                           
+D:\AI-DOCKER\AI-Assistant\services\planner-agent\node_modules\mime-db\index.js                                     
+D:\AI-DOCKER\AI-Assistant\services\planner-agent\node_modules\mime-types\index.js                                  
+D:\AI-DOCKER\AI-Assistant\services\planner-agent\node_modules\ms\index.js                                          
+D:\AI-DOCKER\AI-Assistant\services\planner-agent\node_modules\negotiator\index.js                                  
+D:\AI-DOCKER\AI-Assistant\services\planner-agent\node_modules\path-to-regexp\index.js                              
+D:\AI-DOCKER\AI-Assistant\services\planner-agent\node_modules\qs\lib\index.js                                      
+D:\AI-DOCKER\AI-Assistant\services\planner-agent\node_modules\raw-body\index.js                                    
+D:\AI-DOCKER\AI-Assistant\services\planner-agent\node_modules\send\index.js                                        
+D:\AI-DOCKER\AI-Assistant\services\planner-agent\node_modules\send\node_modules\ms\index.js                        
+D:\AI-DOCKER\AI-Assistant\services\planner-agent\node_modules\serve-static\index.js                                
+D:\AI-DOCKER\AI-Assistant\services\planner-agent\node_modules\type-is\index.js                                     
+D:\AI-DOCKER\AI-Assistant\services\planner-agent\src\index.js                                                      
+D:\AI-DOCKER\AI-Assistant\services\policy-engine\src\index.js                                                      
+D:\AI-DOCKER\AI-Assistant\services\task-queue\src\index.js                                                         
+D:\AI-DOCKER\AI-Assistant\services\tool-registry\src\index.js                                                      
+
+
+
+=== TOOL REGISTRY ===
+const express = require('express');
+const bodyParser = require('body-parser');
+const winston = require('winston');
+
+const logger = winston.createLogger({
+    level: 'info',
+    format: winston.format.combine(
+        winston.format.timestamp(),
+        winston.format.json()
+    ),
+    transports: [new winston.transports.Console()]
+});
+
+const app = express();
+app.use(bodyParser.json());
+
+// In-memory registry for mock mode
+const tools = new Map();
+
+// Initial registration of core tools logic
+const registerTool = (definition) => {
+    const { tool, risk_level, rate_limit } = definition;
+    tools.set(tool, {
+        ...definition,
+        status: 'active',
+        usage_count: 0
+    });
+    logger.info(`Tool registered: ${tool} (Risk: ${risk_level})`);
+};
+
+// Seed initial tools
+[
+    {
+        "tool": "browser.open_page",
+        "service": "browser_service",
+        "permission": "browse_web",
+        "risk_level": "medium",
+        "sandbox": true,
+        "rate_limit": 10,
+        "timeout": 5000
+    },
+    {
+        "tool": "browser.search",
+        "service": "browser_service",
+        "permission": "browse_web",
+        "risk_level": "low",
+        "sandbox": true,
+        "rate_limit": 20,
+        "timeout": 10000
+    },
+    {
+        "tool": "filesystem.write",
+        "service": "file_service",
+        "permission": "write_file",
+        "risk_level": "high",
+        "sandbox": true,
+        "rate_limit": 5,
+        "timeout": 2000
+    }
+].forEach(registerTool);
+
+app.post('/tools/register', (req, res) => {
+    const definition = req.body;
+    if (!definition.tool) return res.status(400).json({ error: 'Tool name required' });
+    registerTool(definition);
+    res.json({ message: 'Tool registered', tool: definition.tool });
+});
+
+app.get('/tools', (req, res) => {
+    res.json(Array.from(tools.values()));
+});
+
+app.get('/tools/:name', (req, res) => {
+    const tool = tools.get(req.params.name);
+    if (!tool) return res.status(404).json({ error: 'Tool not found' });
+    res.json(tool);
+});
+
+app.post('/tools/validate', (req, res) => {
+    const { tool: toolName, parameters } = req.body;
+    const tool = tools.get(toolName);
+
+    if (!tool) {
+        return res.status(404).json({ valid: false, reason: 'Tool not found in registry' });
+    }
+
+    // Mock validation logic
+    if (tool.rate_limit && tool.usage_count >= tool.rate_limit) {
+        return res.status(429).json({ valid: false, reason: 'Rate limit exceeded' });
+    }
+
+    // Update usage for mock tracking
+    tool.usage_count++;
+
+    res.json({
+        valid: true,
+        metadata: tool,
+        risk_level: tool.risk_level
+    });
+});
+
+const PORT = process.env.PORT || 3012;
+app.listen(PORT, () => {
+    logger.info(`Tool Registry Service started on port ${PORT}`);
+});
+
+=== PERMISSION ENGINE ===
+const express = require('express');
+const bodyParser = require('body-parser');
+const { createClient } = require('redis');
+const ToolRegistry = require('../../../packages/tool-registry');
+const logger = require('./logger');
+const { v4: uuidv4 } = require('uuid');
+
+const app = express();
+app.use(bodyParser.json());
+
+const REDIS_URL = process.env.REDIS_URL || 'redis://localhost:6379';
+const redisClient = createClient({ url: REDIS_URL });
+
+async function initRedis() {
+    try {
+        await redisClient.connect();
+        logger.info(`[PERMISSION] Connected to Redis at ${REDIS_URL}`);
+    } catch (err) {
+        logger.error(`[PERMISSION] Redis connection error: ${err.message}`);
+    }
+}
+initRedis();
+
+app.post('/request', async (req, res) => {
+    const { taskId, tool, parameters } = req.body;
+    
+    if (!ToolRegistry.validateTool(tool)) {
+        return res.status(400).json({ status: 'failed', error: 'Unknown tool' });
+    }
+
+    const riskLevel = ToolRegistry.getRiskLevel(tool);
+    logger.info(`[PERMISSION] Task ${taskId}: Requesting ${tool} (${riskLevel})`);
+
+    // Rule 1: LOW risk tools are auto-approved
+    if (riskLevel === 'LOW') {
+        logger.info(`[PERMISSION] Task ${taskId}: Auto-approved LOW risk tool: ${tool}`);
+        return res.json({ taskId, tool, status: 'approved', riskLevel, method: 'Auto-approved' });
+    }
+
+    // Rule 2: MEDIUM, HIGH, CRITICAL require manual approval
+    const requestId = uuidv4();
+    const request = {
+        requestId,
+        taskId,
+        tool,
+        parameters,
+        riskLevel,
+        status: 'pending',
+        timestamp: Date.now()
+    };
+
+    // Store in Redis with TTL (1 hour)
+    await redisClient.set(`perm:${requestId}`, JSON.stringify(request), { EX: 3600 });
+    
+    logger.info(`[PERMISSION] Task ${taskId}: Manual approval required for ${tool} (Request ID: ${requestId})`);
+
+    // Notify Telegram Bot (Bridge Integration)
+    const TELEGRAM_SERVICE = process.env.TELEGRAM_URL || 'http://telegram-bot:3011';
+    axios.post(`${TELEGRAM_SERVICE}/notify`, {
+        request: { requestId, taskId, tool, riskLevel, parameters }
+    }).catch(err => logger.error(`[PERMISSION] Failed to notify Telegram: ${err.message}`));
+
+    return res.json({ taskId, tool, status: 'pending', requestId, riskLevel });
+});
+
+app.post('/approve', async (req, res) => {
+    const { requestId } = req.body;
+    const data = await redisClient.get(`perm:${requestId}`);
+    if (!data) return res.status(404).json({ status: 'failed', error: 'Request not found' });
+
+    const request = JSON.parse(data);
+    request.status = 'approved';
+    await redisClient.set(`perm:${requestId}`, JSON.stringify(request), { EX: 3600 });
+    
+    logger.info(`[PERMISSION] Task ${request.taskId}: Approved request ${requestId}`);
+    return res.json({ status: 'success', data: request });
+});
+
+app.post('/reject', async (req, res) => {
+    const { requestId } = req.body;
+    const data = await redisClient.get(`perm:${requestId}`);
+    if (!data) return res.status(404).json({ status: 'failed', error: 'Request not found' });
+
+    const request = JSON.parse(data);
+    request.status = 'rejected';
+    await redisClient.set(`perm:${requestId}`, JSON.stringify(request), { EX: 3600 });
+    
+    logger.warn(`[PERMISSION] Task ${request.taskId}: Rejected request ${requestId}`);
+    return res.json({ status: 'success', data: request });
+});
+
+const PORT = 3006;
+app.listen(PORT, () => {
+    logger.info(`[PERMISSION] Service started on port ${PORT}`);
+});
+
+=== CONTEXT BUILDER ===
+const express = require('express');
+const { createClient } = require('redis');
+const mongoose = require('mongoose');
+const winston = require('winston');
+
+const logger = winston.createLogger({
+    level: 'info',
+    format: winston.format.combine(winston.format.timestamp(), winston.format.json()),
+    transports: [new winston.transports.Console()]
+});
+
+const app = express();
+app.use(express.json());
+
+// DB Connections
+const REDIS_URL = process.env.REDIS_URL || 'redis://localhost:6379';
+const MONGO_URL = process.env.MONGO_URL || 'mongodb://localhost:27017/ai_os';
+
+const redisClient = createClient({ url: REDIS_URL });
+mongoose.connect(MONGO_URL);
+
+app.post('/context/build', async (req, res) => {
+    const { userId, prompt } = req.body;
+    logger.info(`Building context for user ${userId}`);
+
+    try {
+        await redisClient.connect();
+        
+        // 1. Fetch Short-Term Memory (Redis)
+        const sessionState = await redisClient.get(`session:${userId}`) || "{}";
+        const activeTasks = await redisClient.sMembers(`active_tasks:${userId}`) || [];
+
+        // 2. Fetch Long-Term Memory (MongoDB - Mocked for now)
+        // In a real scenario, we'd query a ConversationModel
+        const conversationHistory = [
+            { role: 'user', content: 'Previous message' },
+            { role: 'assistant', content: 'Previous response' }
+        ];
+
+        // 3. Environment State (Mocked)
+        const environmentState = {
+            os_version: 'AI-OS v1.0',
+            workspace_ready: true,
+            network_status: 'online'
+        };
+
+        const context = {
+            user_request: prompt,
+            conversation_history: conversationHistory,
+            environment_state: environmentState,
+            session_state: JSON.parse(sessionState),
+            active_tasks: activeTasks,
+            timestamp: new Date().toISOString()
+        };
+
+        await redisClient.disconnect();
+        res.json(context);
+
+    } catch (error) {
+        logger.error(`Context building failed: ${error.message}`);
+        res.status(500).json({ error: 'Context retrieval error' });
+    }
+});
+
+const PORT = 3015;
+app.listen(PORT, () => {
+    logger.info(`Context Builder Service started on port ${PORT}`);
+});
+
+=== OBSERVER AGENT ===
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const { createClient } = require('redis');
+const logger = require('./logger');
+
+const REDIS_URL = process.env.REDIS_URL || 'redis://ai_redis:6379';
+const redisClient = createClient({ url: REDIS_URL });
+redisClient.connect().catch(err => logger.error(`[OBSERVER] Redis error: ${err.message}`));
+
+async function revertToMock(reason) {
+    try {
+        const currentMode = await redisClient.get('AI_EXECUTION_MODE');
+        if (currentMode === 'live') {
+            await redisClient.set('AI_EXECUTION_MODE', 'mock');
+            logger.warn(`[FAILSAFE] Reverted to MOCK mode due to: ${reason}`);
+                if (global.io) {
+                    global.io.emit('mode_updated', { mode: 'mock' });
+                    global.io.emit('system_alert', {
+                        type: 'FAILSAFE_TRIGGERED',
+                        message: `System automatically reverted to MOCK mode: ${reason}`
+                    });
+                }
+        }
+    } catch (err) {
+        logger.error(`[FAILSAFE] Revert failed: ${err.message}`);
+    }
+}
+
+const app = express();
+app.use(bodyParser.json());
+
+// â”€â”€â”€ MongoDB â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+const MONGO_URL = process.env.MONGO_URL || 'mongodb://mongodb:27017/ai_os';
+
+mongoose.connect(MONGO_URL)
+    .then(() => logger.info(`[OBSERVER] Connected to MongoDB at ${MONGO_URL}`))
+    .catch(err => logger.error(`[OBSERVER] MongoDB connection error: ${err.message}`));
+
+// â”€â”€â”€ Schemas â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+/** General pipeline event timeline */
+const timelineSchema = new mongoose.Schema({
+    taskId:    { type: String, required: true, index: true },
+    stage:     { type: String, required: true },
+    message:   { type: String, required: true },
+    data:      { type: Object, default: {} },
+    timestamp: { type: Date, default: Date.now }
+});
+const Timeline = mongoose.model('Timeline', timelineSchema);
+
+/** Security-specific events for audit and Grafana */
+const securityEventSchema = new mongoose.Schema({
+    taskId:    { type: String, required: true, index: true },
+    eventType: {
+        type: String,
+        required: true,
+        enum: [
+            'PERMISSION_REQUESTED', 'PERMISSION_APPROVED', 'PERMISSION_REJECTED',
+            'POLICY_VIOLATION', 'EXECUTION_TIMEOUT', 'INFINITE_LOOP_DETECTED',
+            'BOUNDARY_CHECK_FAILED', 'UNAUTHORIZED_TOOL', 'RATE_LIMIT_EXCEEDED',
+            'GENERAL_EVENT'
+        ]
+    },
+    severity: {
+        type: String,
+        required: true,
+        enum: ['LOW', 'MEDIUM', 'HIGH', 'CRITICAL'],
+        default: 'LOW'
+    },
+    tool:      { type: String, default: null },
+    message:   { type: String, required: true },
+    data:      { type: Object, default: {} },
+    resolved:  { type: Boolean, default: false },
+    tags:      { type: [String], default: [] },
+    timestamp: { type: Date, default: Date.now }
+});
+const SecurityEvent = mongoose.model('SecurityEvent', securityEventSchema);
+
+/** Knowledge Base for long-term facts extracted from tasks */
+const knowledgeSchema = new mongoose.Schema({
+    fact:      { type: String, required: true },
+    source:    { type: String, default: 'agent_observation' },
+    taskId:    { type: String, default: null },
+    tags:      { type: [String], default: [] },
+    confidence: { type: Number, default: 0.8 },
+    timestamp: { type: Date, default: Date.now }
+});
+const Knowledge = mongoose.model('Knowledge', knowledgeSchema);
+
+// â”€â”€â”€ In-memory metrics counters (Prometheus-compatible) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+const metrics = {
+    tasks_total:              0,
+    tasks_completed:          0,
+    tasks_failed:             0,
+    security_events_total:    0,
+    permission_requests:      0,
+    permission_approved:      0,
+    permission_rejected:      0,
+    policy_violations:        0,
+    execution_timeouts:       0,
+    tool_executions:          0,
+};
+
+function incrementMetric(key, by = 1) {
+    if (key in metrics) metrics[key] += by;
+}
+
+// â”€â”€â”€ Routes: Timeline â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+app.post('/log', async (req, res) => {
+    const { taskId, stage, message, data } = req.body;
+    logger.info(`[OBSERVER] Task ${taskId} | ${stage} | ${message}`);
+
+    try {
+        // Track global task lifecycle metrics
+        if (stage === 'brain' && message.startsWith('Initializing')) incrementMetric('tasks_total');
+        if (message.includes('All tasks completed')) incrementMetric('tasks_completed');
+        if (stage === 'executor' && message.includes('Execution Failed')) incrementMetric('tasks_failed');
+        if (stage === 'executor' && message.includes('completed successfully')) incrementMetric('tool_executions');
+
+        const entry = new Timeline({ taskId, stage, message, data });
+        await entry.save();
+
+        if (global.io) global.io.emit('timeline_update', entry);
+
+        return res.json({ taskId, status: 'logged', id: entry._id });
+    } catch (error) {
+        logger.error(`[OBSERVER] Task ${taskId}: Error logging timeline: ${error.message}`);
+        return res.status(500).json({ taskId, status: 'failed', error: error.message });
+    }
+});
+
+app.get('/timeline/:taskId', async (req, res) => {
+    const { taskId } = req.params;
+    const history = await Timeline.find({ taskId }).sort({ timestamp: 1 });
+    return res.json({ taskId, history });
+});
+
+app.get('/timeline', async (req, res) => {
+    const { limit = 50, since } = req.query;
+    const filter = since ? { timestamp: { $gt: new Date(since) } } : {};
+    const history = await Timeline.find(filter)
+        .sort({ timestamp: -1 })
+        .limit(parseInt(limit));
+    return res.json({ history: history.reverse() });
+});
+
+// â”€â”€â”€ Routes: Security Events â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+app.post('/security/log', async (req, res) => {
+    const { taskId, eventType, severity, tool, message, data = {}, tags = [] } = req.body;
+
+    if (!taskId || !eventType || !message) {
+        return res.status(400).json({ status: 'failed', error: 'taskId, eventType, message required' });
+    }
+
+    logger.warn(`[OBSERVER:SECURITY] Task ${taskId} | ${severity || 'LOW'} | ${eventType} | ${message}`);
+
+    try {
+        incrementMetric('security_events_total');
+
+        // Map event â†’ specific counters
+        if (eventType === 'PERMISSION_REQUESTED') incrementMetric('permission_requests');
+        if (eventType === 'PERMISSION_APPROVED')  incrementMetric('permission_approved');
+        if (eventType === 'PERMISSION_REJECTED')  incrementMetric('permission_rejected');
+        if (eventType === 'POLICY_VIOLATION' || severity === 'CRITICAL') {
+            await revertToMock(`${eventType} with ${severity} severity: ${message}`);
+            if (eventType === 'POLICY_VIOLATION') incrementMetric('policy_violations');
+        }
+        if (eventType === 'EXECUTION_TIMEOUT')    incrementMetric('execution_timeouts');
+
+        const event = new SecurityEvent({ taskId, eventType, severity: severity || 'LOW', tool, message, data, tags });
+        await event.save();
+
+        if (global.io) global.io.emit('security_event', event);
+
+        return res.json({ status: 'logged', id: event._id, eventType, severity: event.severity });
+    } catch (err) {
+        logger.error(`[OBSERVER:SECURITY] Failed to log event: ${err.message}`);
+        return res.status(500).json({ status: 'failed', error: err.message });
+    }
+});
+
+app.get('/security/events', async (req, res) => {
+    const { limit = 100, severity, resolved, eventType } = req.query;
+    const filter = {};
+    if (severity)  filter.severity  = severity;
+    if (eventType) filter.eventType = eventType;
+    if (resolved !== undefined) filter.resolved = resolved === 'true';
+
+    const events = await SecurityEvent.find(filter)
+        .sort({ timestamp: -1 })
+        .limit(parseInt(limit));
+    return res.json({ count: events.length, events });
+});
+
+app.patch('/security/events/:id/resolve', async (req, res) => {
+    const event = await SecurityEvent.findByIdAndUpdate(
+        req.params.id,
+        { resolved: true },
+        { new: true }
+    );
+    if (!event) return res.status(404).json({ status: 'not_found' });
+    return res.json({ status: 'resolved', event });
+});
+
+// â”€â”€â”€ Routes: Knowledge (Long-term Memory) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+app.post('/knowledge', async (req, res) => {
+    const { fact, source, taskId, tags = [], confidence = 0.8 } = req.body;
+    if (!fact) return res.status(400).json({ status: 'failed', error: 'fact is required' });
+
+    try {
+        const entry = new Knowledge({ fact, source, taskId, tags, confidence });
+        await entry.save();
+        logger.info(`[OBSERVER:KNOWLEDGE] New fact recorded: "${fact}"`);
+        return res.json({ status: 'recorded', id: entry._id });
+    } catch (err) {
+        logger.error(`[OBSERVER:KNOWLEDGE] Failed to record fact: ${err.message}`);
+        return res.status(500).json({ status: 'failed', error: err.message });
+    }
+});
+
+app.get('/knowledge', async (req, res) => {
+    const { query, tag, limit = 100 } = req.query;
+    const filter = {};
+    if (query) filter.fact = { $regex: query, $options: 'i' };
+    if (tag) filter.tags = tag;
+
+    const facts = await Knowledge.find(filter)
+        .sort({ timestamp: -1 })
+        .limit(parseInt(limit));
+    return res.json({ count: facts.length, facts });
+});
+
+// â”€â”€â”€ Routes: Prometheus Metrics â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+app.get('/metrics', (req, res) => {
+    const lines = [
+        '# HELP ai_os_tasks_total Total tasks processed by brain',
+        '# TYPE ai_os_tasks_total counter',
+        `ai_os_tasks_total ${metrics.tasks_total}`,
+
+        '# HELP ai_os_tasks_completed Tasks completed successfully',
+        '# TYPE ai_os_tasks_completed counter',
+        `ai_os_tasks_completed ${metrics.tasks_completed}`,
+
+        '# HELP ai_os_tasks_failed Tasks that failed during execution',
+        '# TYPE ai_os_tasks_failed counter',
+        `ai_os_tasks_failed ${metrics.tasks_failed}`,
+
+        '# HELP ai_os_tool_executions Total tool execution events',
+        '# TYPE ai_os_tool_executions counter',
+        `ai_os_tool_executions ${metrics.tool_executions}`,
+
+        '# HELP ai_os_security_events_total Total security events logged',
+        '# TYPE ai_os_security_events_total counter',
+        `ai_os_security_events_total ${metrics.security_events_total}`,
+
+        '# HELP ai_os_permission_requests Permission requests raised',
+        '# TYPE ai_os_permission_requests counter',
+        `ai_os_permission_requests ${metrics.permission_requests}`,
+
+        '# HELP ai_os_permission_approved Permissions approved by human',
+        '# TYPE ai_os_permission_approved counter',
+        `ai_os_permission_approved ${metrics.permission_approved}`,
+
+        '# HELP ai_os_permission_rejected Permissions rejected by human',
+        '# TYPE ai_os_permission_rejected counter',
+        `ai_os_permission_rejected ${metrics.permission_rejected}`,
+
+        '# HELP ai_os_policy_violations Security policy violations detected',
+        '# TYPE ai_os_policy_violations counter',
+        `ai_os_policy_violations ${metrics.policy_violations}`,
+
+        '# HELP ai_os_execution_timeouts Tasks that exceeded execution timeout',
+        '# TYPE ai_os_execution_timeouts counter',
+        `ai_os_execution_timeouts ${metrics.execution_timeouts}`,
+    ];
+
+    res.set('Content-Type', 'text/plain; version=0.0.4');
+    res.send(lines.join('\n') + '\n');
+});
+
+// â”€â”€â”€ Routes: Health â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+app.get('/health', (req, res) => {
+    const dbState = mongoose.connection.readyState;
+    res.json({
+        status: 'ok',
+        db: dbState === 1 ? 'connected' : 'disconnected',
+        metrics
+    });
+});
+
+// â”€â”€â”€ Start â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+const PORT = process.env.PORT || 3014;
+app.listen(PORT, '0.0.0.0', () => {
+    logger.info(`[OBSERVER] Service started on port ${PORT} (Bound to 0.0.0.0)`);
+});
+
