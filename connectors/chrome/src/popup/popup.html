@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="glass-panel">
+        <header>
+            <div class="icon"></div>
+            <h1>AI Assistant OS</h1>
+        </header>
+        
+        <form id="ai-form">
+            <textarea id="prompt" placeholder="Ask AI Assistant to analyze, search, or autofill..."></textarea>
+            <button type="submit" id="send-btn">Process Command</button>
+        </form>
+
+        <div id="status">
+            <span class="dot"></span> Connected to api-server:3001
+        </div>
+        
+        <div id="response-area" class="hidden"></div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>

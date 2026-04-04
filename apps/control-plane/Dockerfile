@@ -21,16 +21,19 @@ COPY packages/shared-config/package.json ./packages/shared-config/
 COPY packages/permission-model/package.json ./packages/permission-model/
 COPY packages/task-model/package.json ./packages/task-model/
 COPY packages/tool-model/package.json ./packages/tool-model/
-COPY packages/task-queue/package.json ./packages/task-queue/
-COPY packages/tool-registry/package.json ./packages/tool-registry/
 
-RUN npm ci
+COPY packages/tool-registry-sdk/package.json ./packages/tool-registry-sdk/
+
+# Install ONLY focused dependencies for building
+RUN npm ci --workspace control-plane --include-workspace-root --ignore-scripts --legacy-peer-deps
 
 FROM node:22-slim AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NO_UPDATE_NOTIFIER=1
 RUN npm run build --workspace control-plane
 
 FROM node:22-slim AS runner

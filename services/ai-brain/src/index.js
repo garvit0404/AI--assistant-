@@ -28,13 +28,22 @@ startRedis();
 const app = express();
 app.use(bodyParser.json());
 
+const getSystemMode = async () => {
+    try {
+        const mode = await redisClient.get('AI_EXECUTION_MODE');
+        return mode || config.AI_MODE || 'mock';
+    } catch {
+        return config.AI_MODE || 'mock';
+    }
+};
+
 const SERVICES = {
     INTENT: process.env.INTENT_PARSER_URL || 'http://ai_intent_parser:3007',
     PLANNER: process.env.PLANNER_AGENT_URL || 'http://ai_planner:3008',
     POLICY: process.env.POLICY_ENGINE_URL || 'http://ai_policy_engine:3005',
     PERMISSION: process.env.PERMISSION_ENGINE_URL || 'http://ai_permission_engine:3006',
     EXECUTOR: process.env.EXECUTOR_AGENT_URL || 'http://ai_executor:3004',
-    OBSERVER: process.env.OBSERVER_AGENT_URL || 'http://ai_observer:3014'
+    OBSERVER: process.env.OBSERVER_AGENT_URL || 'http://ai_observer:3009'
 };
 
 async function logEvent(taskId, stage, message, data = {}) {
@@ -67,7 +76,7 @@ app.post('/process', async (req, res) => {
 
         // 3. POLICY VALIDATOR
         await logEvent(taskId, 'policy_engine', 'Validating plan against security policies...');
-        const policyResponse = await axios.post(`${SERVICES.POLICY}/validate`, { taskId, plan });
+        const policyResponse = await axios.post(`${SERVICES.POLICY}/validate`, { taskId, plan, intent, prompt });
         if (!policyResponse.data.approved) {
             const error = `Policy Violation: ${policyResponse.data.violations[0].reason}`;
             await logEvent(taskId, 'policy_engine', error, { violations: policyResponse.data.violations });
@@ -144,21 +153,37 @@ async function executePlanInSteps(taskId, intent, plan) {
 }
 
 async function waitForApproval(requestId) {
-    // Basic Polling for this implementation
-    return new Promise(async (resolve) => {
-        const interval = setInterval(async () => {
+    return new Promise((resolve) => {
+        const pollInterval = setInterval(async () => {
             try {
-                // Check status via Permission Service (Mock integration)
-                // In production, we'd use a Pub/Sub mechanism
-                const check = await axios.post(`${SERVICES.PERMISSION}/approve`, { requestId: 'check-status' }); // Mocked check
-            } catch (err) {}
-        }, 2000);
+                // Poll the permission-engine for the status of this specific request
+                const response = await axios.get(`${SERVICES.PERMISSION}/requests/${requestId}`);
+                const { status } = response.data;
+                
+                if (status === 'approved') {
+                    clearInterval(pollInterval);
+                    resolve(true);
+                } else if (status === 'rejected') {
+                    clearInterval(pollInterval);
+                    resolve(false);
+                }
+                // Still 'pending'... log and wait for next interval
+                logger.info(`[BRAIN] Task for request ${requestId} is still pending approval...`);
+            } catch (err) {
+                logger.error(`[BRAIN] Error polling permission for ${requestId}: ${err.message}`);
+                // If the request is not found (404), stop polling and resolve as denied
+                if (err.response && err.response.status === 404) {
+                    clearInterval(pollInterval);
+                    resolve(false);
+                }
+            }
+        }, 3000); // Poll every 3 seconds
     });
 }
 
 // --- INTERNAL AI SERVICE ENDPOINT WITH MEMORY ---
 app.post('/ai/chat', async (req, res) => {
-    const { prompt, systemPrompt, userId = 'default_user' } = req.body;
+    const { prompt, systemPrompt, userId = 'default_user', jsonMode = true } = req.body;
     const historyKey = `chat_history:${userId}`;
     
     // 1. Fetch History from Redis
@@ -172,41 +197,60 @@ app.post('/ai/chat', async (req, res) => {
         logger.warn(`[BRAIN:AI] Failed to fetch history for ${userId}: ${err.message}`);
     }
 
-    if (config.AI_MODE === 'mock') {
+    const currentMode = await getSystemMode();
+    if (currentMode === 'mock') {
         logger.info(`[BRAIN:AI] Mock AI request received for ${userId}`);
         return res.json({ 
-            choices: [{ message: { content: "{\"status\": \"mock_success\", \"info\": \"AI-Brain Mock Mode Active with History\"}" } }]
+            choices: [{ message: { content: JSON.stringify({
+                intent: "GENERAL_CHAT",
+                message: "Mock Response: System is in MOCK mode.",
+                confidence: 1.0
+            }) } }]
         });
     }
 
     try {
-        logger.info(`[BRAIN:AI] Forwarding request to OpenAI for ${userId}...`);
+        const llmLayerUrl = process.env.LLM_LAYER_URL || 'http://ai_llm_layer:3020';
+        logger.info(`[BRAIN:AI] Forwarding request to LLM Layer for ${userId}...`);
         
-        const messages = [
-            { role: 'system', content: systemPrompt || 'You are a helpful assistant.' },
-            ...history.slice(-10), // Keep last 10 messages for context
-            { role: 'user', content: prompt }
-        ];
-
-        const response = await openai.chat.completions.create({
-            model: config.OPENAI_MODEL,
-            messages: messages,
-            response_format: { type: "json_object" }
+        const response = await axios.post(`${llmLayerUrl}/chat`, {
+            prompt,
+            system_prompt: systemPrompt,
+            user_id: userId,
+            options: {
+                json_mode: jsonMode,
+                model: config.OPENAI_MODEL // Pass as preferred cloud model
+            }
         });
 
+        const result = response.data.data;
+        const assistantText = result.text;
+        
+        // Format to match OpenAI response structure if possible or simplify
+        const formattedResponse = {
+            choices: [{
+                message: {
+                    content: assistantText,
+                    role: 'assistant'
+                }
+            }],
+            usage: result.usage,
+            model: result.model,
+            source: result.source
+        };
+
         // 2. Save new message and response to history
-        const assistantMessage = response.choices[0].message;
         history.push({ role: 'user', content: prompt });
-        history.push(assistantMessage);
+        history.push({ role: 'assistant', content: assistantText });
         
         // Trim and persist
         await redisClient.set(historyKey, JSON.stringify(history.slice(-50)), {
             EX: 86400 * 7 // Expire in 7 days
         });
 
-        return res.json(response);
+        return res.json(formattedResponse);
     } catch (err) {
-        logger.error(`[BRAIN:AI] OpenAI Error: ${err.message}`);
+        logger.error(`[BRAIN:AI] LLM Layer Error: ${err.message}`);
         return res.status(500).json({ error: err.message });
     }
 });

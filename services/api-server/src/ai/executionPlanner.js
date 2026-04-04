@@ -28,7 +28,7 @@ Prefer filesystem APIs and cross-platform abstractions.
 
 EXECUTION TYPES
 Allowed execution types:
-file_creation, code_generation, api_call, automation_task, read_file, write_file
+file_creation, code_generation, api_call, automation_task, read_file, write_file, llm_generation, none
 If execution does not match these types, mark execution_type as "none".
 
 SECURITY PRINCIPLES
@@ -46,15 +46,22 @@ When generating code:
 * Enforce secure coding (XSS, SQLi, Command Injection prevention)
 * Sanitize inputs and escape output
 
+LLM GENERATION RULES
+If intent is LLM_GENERATION:
+* Use tool "llm_service"
+* Use operation "generate_text"
+* Set path to null
+* Do NOT use filesystem tools.
+
 OUTPUT SCHEMA
 {
   "intent": string,
-  "execution_type": "file_creation" | "code_generation" | "api_call" | "automation_task" | "read_file" | "write_file" | "none",
+  "execution_type": "file_creation" | "code_generation" | "api_call" | "automation_task" | "read_file" | "write_file" | "llm_generation" | "none",
   "approved_workspace_path": string | null,
   "execution_plan": [
     {
       "step": number,
-      "tool": "filesystem" | "code_generator" | "task_executor",
+      "tool": "filesystem" | "code_generator" | "task_executor" | "llm_service",
       "operation": string,
       "path": string | null,
       "description": string

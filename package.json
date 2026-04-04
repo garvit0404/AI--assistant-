@@ -6,7 +6,8 @@
   "workspaces": [
     "apps/*",
     "services/*",
-    "packages/*"
+    "packages/*",
+    "connectors/*"
   ],
   "scripts": {
     "install:all": "npm install",
@@ -18,6 +19,7 @@
     "clean": "npm run clean --workspaces --if-present && rimraf node_modules"
   },
   "devDependencies": {
+    "framer-motion": "^11.18.2",
     "rimraf": "^6.0.1"
   }
 }

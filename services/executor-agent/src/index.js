@@ -2,12 +2,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const { createClient } = require('redis');
-const ToolRegistry = require('../../../packages/tool-registry');
+const ToolRegistry = require('@repo/tool-registry-sdk');
 const logger = require('./logger');
 
 const REDIS_URL = process.env.REDIS_URL || 'redis://ai_redis:6379';
 const redisClient = createClient({ url: REDIS_URL });
 redisClient.connect().catch(err => logger.error(`[EXECUTOR] Redis Error: ${err.message}`));
+
+const SANDBOX_URL = process.env.SANDBOX_URL || 'http://ai_sandbox:5000';
 
 async function getExecutionMode() {
     try {
@@ -21,13 +23,30 @@ async function getExecutionMode() {
 const app = express();
 app.use(bodyParser.json());
 
-const SANDBOX_URL = process.env.SANDBOX_URL || 'http://ai_sandbox:3010';
+const LOG_URL = process.env.LOG_URL || 'http://localhost:3001/api/logs';
+
+async function logEvent(taskId, stage, status, message, meta = {}) {
+    try {
+        await axios.post(LOG_URL, { taskId, stage, status, message, meta });
+    } catch (e) {
+        logger.error(`[EXECUTOR LOG FAILED]: ${e.message}`);
+    }
+}
 
 app.post('/execute', async (req, res) => {
     const { taskId, tool, parameters } = req.body;
     
+    await logEvent(taskId, 'executor', 'running', `Executing tool: ${tool}`, { parameters });
+    
     if (!ToolRegistry.validateTool(tool)) {
-        return res.status(400).json({ status: 'failed', error: `Unknown tool: ${tool}` });
+        const err = `Unknown tool: ${tool}`;
+        await logEvent(taskId, 'executor', 'failed', err, { tool });
+        return res.status(400).json({ 
+            success: false, // TASK 7
+            error: err, 
+            tool, 
+            step: 'executor' 
+        });
     }
 
     const EXECUTION_MODE = await getExecutionMode();
@@ -42,10 +61,17 @@ app.post('/execute', async (req, res) => {
             result = await executeInSandbox(tool, parameters);
         }
 
+        await logEvent(taskId, 'executor', 'success', `Tool ${tool} executed successfully`);
         return res.json({ taskId, tool, result });
     } catch (error) {
+        await logEvent(taskId, 'executor', 'failed', error.message, { tool });
         logger.error(`[EXECUTOR] Task ${taskId}: Error executing ${tool}: ${error.message}`);
-        return res.status(500).json({ taskId, tool, status: 'failed', error: error.message });
+        return res.status(500).json({ 
+            success: false, // TASK 7
+            error: error.message, 
+            tool, 
+            step: 'executor' 
+        });
     }
 });
 
@@ -79,6 +105,18 @@ async function executeInSandbox(tool, parameters) {
         let payload = {};
 
         switch (tool) {
+            case 'browser.navigate':
+                endpoint = '/browser/navigate';
+                payload = { url: parameters.url };
+                break;
+            case 'browser.click':
+                endpoint = '/browser/click';
+                payload = { selector: parameters.selector };
+                break;
+            case 'browser.fill':
+                endpoint = '/browser/fill';
+                payload = { selector: parameters.selector, value: parameters.value };
+                break;
             case 'browser.search':
                 endpoint = '/browser/search';
                 payload = { query: parameters.query };

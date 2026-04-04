@@ -1,5 +1,6 @@
 {
-  "name": "@ai-assistant/tool-registry",
+  "name": "@repo/tool-registry",
   "version": "1.0.0",
-  "main": "index.js"
+  "main": "index.js",
+  "dependencies": {}
 }

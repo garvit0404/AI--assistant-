@@ -31,12 +31,30 @@ const registerTool = (definition) => {
 // Seed initial tools
 [
     {
-        "tool": "browser.open_page",
+        "tool": "browser.navigate",
+        "service": "browser_service",
+        "permission": "browse_web",
+        "risk_level": "low",
+        "sandbox": true,
+        "rate_limit": 30,
+        "timeout": 15000
+    },
+    {
+        "tool": "browser.click",
         "service": "browser_service",
         "permission": "browse_web",
         "risk_level": "medium",
         "sandbox": true,
-        "rate_limit": 10,
+        "rate_limit": 50,
+        "timeout": 5000
+    },
+    {
+        "tool": "browser.fill",
+        "service": "browser_service",
+        "permission": "browse_web",
+        "risk_level": "medium",
+        "sandbox": true,
+        "rate_limit": 20,
         "timeout": 5000
     },
     {

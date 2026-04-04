@@ -5,8 +5,6 @@
 # --- Dependencies ---
 node_modules/
 **/node_modules/
-package-lock.json (exclude if using npm for strict version control, recommended to KEEP if desired, but many monorepos ignore lock in root)
-# Let's keep lock for standard npm/yarn/pnpm practices, but user specifically asked for node_modules.
 
 # --- Environment & Secrets ---
 .env
@@ -20,12 +18,12 @@ package-lock.json (exclude if using npm for strict version control, recommended 
 
 # --- Build Outputs ---
 .next/
+**/.next/
 out/
 build/
 dist/
 **/build
 **/dist
-.next
 .docusaurus
 
 # --- Logs & Performance ---
@@ -36,9 +34,13 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+errordebug.txt
+
+# --- Monorepo Artifacts ---
+STRUCTURE.txt
+update
 
 # --- Infrastructure & Database Data ---
-# (Prevent committing large DB directories from docker volumes)
 infra/docker/mongo-data/
 infra/docker/redis-data/
 infra/docker/grafana-data/
@@ -51,7 +53,6 @@ infra/docker/prometheus/data/
 # --- User Workspace ---
 workspace/
 **/workspace/temp/
-# Usually we ignore the actual generated AI files to keep repo clean
 workspace/*.js
 workspace/*.py
 workspace/*.sh
@@ -79,4 +80,4 @@ coverage/
 .cache
 .npmrc
 .yarn/
-.editorconfig (Keep if desired, optional to ignore)
+.editorconfig

@@ -21,8 +21,8 @@ COPY packages/shared-config/package.json ./packages/shared-config/
 COPY packages/permission-model/package.json ./packages/permission-model/
 COPY packages/task-model/package.json ./packages/task-model/
 COPY packages/tool-model/package.json ./packages/tool-model/
-COPY packages/task-queue/package.json ./packages/task-queue/
-COPY packages/tool-registry/package.json ./packages/tool-registry/
+
+COPY packages/tool-registry-sdk/package.json ./packages/tool-registry-sdk/
 
 # Install dependencies for the specific workspace
 RUN npm ci --workspace api-server --include-workspace-root --omit=dev && \

@@ -98,17 +98,22 @@ const setSystemMode = async (req, res) => {
 const handleChat = async (req, res) => {
     try {
         const { message } = req.body;
+        const userId = req.user ? req.user.id : 'anonymous';
+        
         if (!message) return res.status(400).json({ success: false, error: 'Message required' });
 
-        logger.info(`Chat Request: "${message}"`);
+        logger.info(`Chat Request from ${userId}: "${message}"`);
         const orchestrator = new Orchestrator(req.app);
-        const result = await orchestrator.runTask(message, req.ip);
+        const result = await orchestrator.runTask(message, req.ip, userId);
         
         const mode = await modeManager.getMode();
 
+        console.log("FINAL RESPONSE:", result.message); // TASK 3 & 6
+
         res.json({
             success: result.success,
-            message: result.final_result || result.error,
+            taskId: result.taskId, // Added for frontend tracking
+            message: result.message, // TASK 3
             mode: mode,
             trace: result.trace,
             error: result.error

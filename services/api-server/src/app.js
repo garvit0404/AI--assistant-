@@ -3,6 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const assistantRoutes = require('./routes/assistant.routes.js');
 const permissionRoutes = require('./routes/permission.routes.js');
+const authRoutes = require('./routes/auth.routes.js');
 const { errorHandler } = require('./middleware/errorHandler.js');
 const logger = require('./utils/logger.js');
 const prom = require('prom-client');
@@ -49,9 +50,12 @@ app.use((req, res, next) => {
 });
 
 const dashboardRoutes = require('./routes/dashboard.routes.js');
+const integrationRoutes = require('./routes/integration.routes.js');
 
+app.use('/api/auth', authRoutes);
 app.use('/api/assistant', assistantRoutes);
 app.use('/api/permissions', permissionRoutes);
+app.use('/api/integrations', integrationRoutes);
 app.use('/', dashboardRoutes);
 app.get('/health', (req, res) => {
     const mongoState = mongoose.connection.readyState;
@@ -70,6 +74,32 @@ app.get('/health', (req, res) => {
         },
         uptime: Math.floor(process.uptime()),
     });
+});
+
+app.get('/routes', (req, res) => {
+    const list = [];
+    app._router.stack.forEach(layer => {
+        if (layer.route && layer.route.path) {
+            Object.keys(layer.route.methods).forEach(method => {
+                list.push({ path: layer.route.path, method: method.toUpperCase() });
+            });
+        }
+        if (layer.name === 'router') {
+            const basePath = layer.regexp.toString().split('\\/')[1] || '';
+            layer.handle.stack.forEach(subLayer => {
+                if (subLayer.route && subLayer.route.path) {
+                    Object.keys(subLayer.route.methods).forEach(method => {
+                        let fullPath = subLayer.route.path;
+                        if (basePath && basePath.length > 0 && basePath !== '^') {
+                             fullPath = '/' + basePath.split('?')[0] + fullPath;
+                        }
+                        list.push({ path: fullPath.replace('//', '/'), method: method.toUpperCase() });
+                    });
+                }
+            });
+        }
+    });
+    res.json({ routes: list });
 });
 
 app.get('/', (req, res) => {
