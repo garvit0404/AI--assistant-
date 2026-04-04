@@ -1,0 +1,30 @@
+{
+    "manifest_version": 3,
+    "name": "AI Assistant Engine",
+    "version": "1.0.0",
+    "description": "Premium Local AI Assistant integration for browser context, search, and form autofill.",
+    "permissions": [
+      "activeTab",
+      "scripting",
+      "storage",
+      "contextMenus"
+    ],
+    "host_permissions": [
+      "http://localhost:3001/*",
+      "http://127.0.0.1:3001/*"
+    ],
+    "action": {
+      "default_popup": "src/popup/popup.html",
+      "default_title": "Open AI Assistant"
+    },
+    "background": {
+      "service_worker": "src/background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["src/content.js"],
+        "run_at": "document_idle"
+      }
+    ]
+  }

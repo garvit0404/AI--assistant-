@@ -50,6 +50,7 @@ OUTPUT SCHEMA
   "target_path": string | null,
   "execution_type": "file_creation" | "code_generation" | "api_call" | "automation_task" | "read_file" | "write_file" | "none",
   "policy_decision": "ALLOW" | "REJECT",
+  "risk_level": "LOW" | "MEDIUM" | "HIGH" | "CRITICAL",
   "violations": string[],
   "safe_workspace_path": string | null,
   "confidence": number
@@ -78,6 +79,7 @@ const validatePolicy = async (intentJson) => {
             intent: parsed.intent || intentJson.intent,
             target_path: parsed.target_path || intentJson.target || null,
             execution_type: parsed.execution_type || "none",
+            risk_level: parsed.risk_level || "CRITICAL",
             policy_decision: parsed.policy_decision || "REJECT",
             violations: Array.isArray(parsed.violations) ? parsed.violations : ["LLM_classification_error"],
             safe_workspace_path: parsed.safe_workspace_path || null,
@@ -89,6 +91,7 @@ const validatePolicy = async (intentJson) => {
             intent: intentJson.intent,
             target_path: intentJson.target || null,
             execution_type: "none",
+            risk_level: "CRITICAL",
             policy_decision: "REJECT",
             violations: [`Validation failure: ${err.message}`],
             safe_workspace_path: null,

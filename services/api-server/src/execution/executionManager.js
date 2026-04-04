@@ -97,11 +97,11 @@ class ExecutionManager {
         }
 
         // Live Mode: Perform real code generation
-        const systemPrompt = "You are a secure code generator. Write only production-ready, security-first code. No conversational text.";
+        const systemPrompt = "You are a secure code generator. Write only production-ready, security-first code. No conversational text.\nCRITICAL RULE: DO NOT use os.system, subprocess, or make arbitrary network calls. DO NOT write file access code outside of the safe workspace directory.";
         const userPrompt = `Generate a ${intentData.language || 'nodejs'} ${intentData.type || 'script'} for ${targetPath}. 
 Follow OWASP security standards. Sanitise inputs. Use secure error handling.`;
 
-        const response = await getAIResponse(userPrompt, systemPrompt);
+        const response = await getAIResponse(userPrompt, systemPrompt, null, false);
         const code = response.choices[0].message.content.trim();
 
         // Strip markdown if AI included it
@@ -141,19 +141,43 @@ Follow OWASP security standards. Sanitise inputs. Use secure error handling.`;
     }
 
     /**
+     * Tool 4: LLM Service Tool
+     */
+    async llmServiceTool(operation, intentData) {
+        logger.info(`LLM Service: ${operation}`);
+        const response = await getAIResponse(intentData.originalMessage, "You are a specialized generation agent. Provide only the requested content.", null, false);
+        const content = response.choices[0].message.content.trim();
+        return { status: 'success', result: content, content: content };
+    }
+
+    /**
+     * Fallback to raw LLM for Task 2
+     */
+    async fallbackToLLM(originalMessage) {
+        try {
+            const response = await getAIResponse(originalMessage, "Execution failed, providing direct AI response as fallback.", null, false);
+            return response.choices[0].message.content.trim();
+        } catch (e) {
+            return "Execution failed and fallback LLM also failed.";
+        }
+    }
+
+    /**
      * Main Entry: Executes the provided plan step-by-step
      */
     async executePlan(taskId, intentData, executionPlan) {
-        logger.info(`Starting execution for task ${taskId} with ${executionPlan.execution_plan.length} steps.`);
+        logger.info(`Starting execution for task ${taskId} with ${executionPlan.execution_plan ? executionPlan.execution_plan.length : 0} steps.`);
         await timelineService.log(taskId, 'executor', 'Execution started');
         
         const stepsResults = [];
+        let currentTool = "unknown";
 
         try {
             for (const step of executionPlan.execution_plan) {
+                currentTool = step.tool;
                 logger.info(`Task ${taskId}: Executing step ${step.step} - ${step.tool}.${step.operation}`);
                 
-                // 1. Permission Gate
+                // ... (Permission Gate logic)
                 const permRequest = await permissionEngine.requestPermission(
                     taskId, 
                     step.step, 
@@ -166,7 +190,9 @@ Follow OWASP security standards. Sanitise inputs. Use secure error handling.`;
                     await timelineService.log(taskId, 'executor', `Waiting for permission: ${step.tool}.${step.operation}`);
                     const approved = await this.waitForPermission(permRequest.requestId);
                     if (!approved) {
-                        throw new Error(`Permission denied for step ${step.step}: ${step.tool}.${step.operation}`);
+                        const err = new Error(`Permission denied for step ${step.step}: ${step.tool}.${step.operation}`);
+                        err.tool = step.tool;
+                        throw err;
                     }
                     await timelineService.log(taskId, 'executor', `Permission granted, resuming execution`);
                 }
@@ -174,30 +200,39 @@ Follow OWASP security standards. Sanitise inputs. Use secure error handling.`;
                 await timelineService.log(taskId, 'executor', `Executing ${step.tool}.${step.operation}`, { step: step.step });
 
                 let result;
+                let retries = 2;
+                while (retries > 0) {
+                    try {
+                        let executionPromise;
+                        switch (step.tool) {
+                            case 'filesystem':
+                                executionPromise = this.filesystemTool(step.operation, step.path, intentData.content || '');
+                                break;
+                            case 'code_generator':
+                                executionPromise = this.codeGeneratorTool(step.operation, step.path, intentData);
+                                break;
+                            case 'task_executor':
+                                executionPromise = this.taskExecutorTool(step.operation, step.description);
+                                break;
+                            case 'llm_service':
+                                executionPromise = this.llmServiceTool(step.operation, intentData);
+                                break;
+                            default:
+                                executionPromise = Promise.reject(new Error(`Unknown tool: ${step.tool}`));
+                        }
 
-                // DYNAMIC MODE ENFORCEMENT
-                const globalMode = await redisClient.get('AI_EXECUTION_MODE') || process.env.AI_MODE || 'mock';
-                
-                if (globalMode === 'mock') {
-                    logger.info(`[MOCK] Simulating ${step.tool}.${step.operation}`);
-                    result = { status: 'success', message: `[MOCK] ${step.tool}.${step.operation} completed successfully` };
-                    
-                    // Simulate a small delay
-                    await new Promise(r => setTimeout(r, 1000));
-                } else {
-                    // Original logic for live mode (not used for this task)
-                    switch (step.tool) {
-                        case 'filesystem':
-                            result = await this.filesystemTool(step.operation, step.path, intentData.content || '');
-                            break;
-                        case 'code_generator':
-                            result = await this.codeGeneratorTool(step.operation, step.path, intentData);
-                            break;
-                        case 'task_executor':
-                            result = await this.taskExecutorTool(step.operation, step.description);
-                            break;
-                        default:
-                            throw new Error(`Unknown tool: ${step.tool}`);
+                        // Add Timeout Layer
+                        const timeoutPromise = new Promise((_, reject) => 
+                            setTimeout(() => reject(new Error(`Execution timeout: ${step.tool} took longer than 15000ms`)), 15000)
+                        );
+
+                        result = await Promise.race([executionPromise, timeoutPromise]);
+                        break; // Success, exit retry loop
+                    } catch (error) {
+                        retries--;
+                        if (retries === 0) throw error;
+                        await timelineService.log(taskId, 'executor', `Step failed: ${error.message}. Retrying... (${retries} attempts left)`);
+                        console.log(`[EXECUTOR] Retry triggered for ${step.tool}. Error: ${error.message}`);
                     }
                 }
 
@@ -206,18 +241,32 @@ Follow OWASP security standards. Sanitise inputs. Use secure error handling.`;
             }
 
             await timelineService.log(taskId, 'executor', 'All tasks completed successfully');
+            
+            // TASK 1 & 4 FIX: Determine the real output
+            const finalOutputResult = stepsResults.find(r => r.content || r.result) || stepsResults[stepsResults.length - 1] || {};
+            const output = finalOutputResult.content || finalOutputResult.result || finalOutputResult.message || 'Execution completed';
+
+            console.log("EXECUTOR RESULT:", output); // TASK 6
+
             return {
                 status: 'success',
                 message: 'All execution steps completed successfully.',
+                output: output, // TASK 1
                 results: stepsResults
             };
 
         } catch (error) {
             logger.error(`Execution halted for task ${taskId}: ${error.message}`);
             await timelineService.log(taskId, 'executor', `Execution failed: ${error.message}`, { error: error.message });
+            
+            const fallbackOutput = await this.fallbackToLLM(intentData.originalMessage);
+
             return {
-                status: 'failed',
+                success: false, // TASK 7
                 error: error.message,
+                step: "executor",
+                tool: currentTool,
+                output: fallbackOutput, // TASK 2
                 completed_steps: stepsResults
             };
         }

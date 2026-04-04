@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { createClient } = require('redis');
-const ToolRegistry = require('../../../packages/tool-registry');
+const ToolRegistry = require('@repo/tool-registry');
 const logger = require('./logger');
 const { v4: uuidv4 } = require('uuid');
 const axios = require('axios');

@@ -4,7 +4,8 @@ const modeManager = require('./modeManager.js');
 
 const BRAIN_URL = process.env.AI_BRAIN_URL || 'http://ai_brain:3003';
 
-const getAIResponse = async (prompt, systemPrompt = 'You are a helpful assistant.') => {
+const getAIResponse = async (prompt, systemPrompt = 'You are a helpful assistant.', userId = null, jsonMode = true) => {
+    const effectiveUserId = userId || `sys_${Date.now()}_${Math.floor(Math.random()*1000)}`;
     try {
         const currentMode = await modeManager.getMode();
         if (currentMode === 'mock') {
@@ -261,12 +262,17 @@ const getAIResponse = async (prompt, systemPrompt = 'You are a helpful assistant
                 };
             }
 
+            if (!jsonMode) {
+                return { choices: [{ message: { content: "Mock response generated without JSON." } }] };
+            }
             return { choices: [{ message: { content: "{ \"status\": \"mock_fallback_success\" }" } }] };
         }
 
         const response = await axios.post(`${BRAIN_URL}/ai/chat`, {
             prompt,
-            systemPrompt
+            systemPrompt,
+            userId: effectiveUserId,
+            jsonMode
         });
 
         return response.data;

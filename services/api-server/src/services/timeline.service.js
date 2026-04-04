@@ -23,6 +23,9 @@ class TimelineService {
             await entry.save();
             logger.info(`[TIMELINE] ${taskId} - ${stage}: ${message}`);
             
+            // TASK 10: Docker Console Logs
+            console.log(`[LOG] ${stage.toUpperCase()} [${metadata.status || 'INFO'}] ${taskId}: ${message}`);
+
             // Broadcast via WebSocket (if available)
             if (global.io) {
                 global.io.emit('timeline_update', {

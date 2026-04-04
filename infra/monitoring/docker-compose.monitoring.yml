@@ -3,6 +3,8 @@ version: '3.8'
 networks:
   monitoring_net:
     driver: bridge
+  ai_net:
+    external: true
 
 services:
 
@@ -22,6 +24,7 @@ services:
       - '--web.enable-lifecycle'
     networks:
       - monitoring_net
+      - ai_net
     restart: always
 
   grafana:
@@ -37,6 +40,7 @@ services:
       - GF_USERS_ALLOW_SIGN_UP=false
     networks:
       - monitoring_net
+      - ai_net
     restart: always
 
   loki:
@@ -49,6 +53,7 @@ services:
     command: -config.file=/etc/loki/local-config.yaml
     networks:
       - monitoring_net
+      - ai_net
     restart: always
 
   promtail:
@@ -61,6 +66,7 @@ services:
     command: -config.file=/etc/promtail/config.yml
     networks:
       - monitoring_net
+      - ai_net
     restart: always
 
   cadvisor:
@@ -75,6 +81,7 @@ services:
       - /var/lib/docker/:/var/lib/docker:ro
     networks:
       - monitoring_net
+      - ai_net
     restart: always
 
   node-exporter:

@@ -14,6 +14,7 @@ const IntentSchema = z.object({
         "WEB_SEARCH",
         "HTTP_FETCH",
         "GENERAL_CHAT",
+        "LLM_GENERATION",
         "unknown"
     ]),
     language: z.string().nullable(),
@@ -41,7 +42,9 @@ SECURITY RULES:
 
 INTENT TAXONOMY:
 Allowed intents:
-FILE_WRITE, FILE_READ, FILE_DELETE, SYSTEM_EXEC, WEB_SEARCH, HTTP_FETCH, GENERAL_CHAT, unknown
+FILE_WRITE: Use ONLY if the user explicitly wants to save/store/write to a physical file (e.g., "save to file.js", "write code into app.py").
+LLM_GENERATION: Use for requests to "generate", "create code", "example of", "explain", or "write function" where no specific save target is mentioned.
+FILE_READ, FILE_DELETE, SYSTEM_EXEC, WEB_SEARCH, HTTP_FETCH, GENERAL_CHAT, unknown
 
 FIELDS:
 intent: string
@@ -56,8 +59,11 @@ confidence: number (0-1)`;
  */
 const FEW_SHOT_EXAMPLES = `
 Examples:
-User: "Create a Python script"
-Output: { "intent":"FILE_WRITE", "language":"python", "type":"script", "target":null, "command":null, "confidence":0.95 }
+User: "Generate a linked list in python"
+Output: { "intent":"LLM_GENERATION", "language":"python", "type":"code", "target":null, "command":null, "confidence":0.98 }
+
+User: "Save this script to hello.js"
+Output: { "intent":"FILE_WRITE", "language":"javascript", "type":"script", "target":"hello.js", "command":null, "confidence":0.95 }
 
 User: "Delete the logs folder"
 Output: { "intent":"FILE_DELETE", "language":null, "type":"directory", "target":"logs", "command":null, "confidence":0.92 }
